@@ -2,7 +2,7 @@
 
 namespace Application.Core.Entities
 {
-    public class Blog: TrackDateEntity
+    public class Blog: TrackEntity
     {
         public string Name { get; set; }
         public bool IsPublished { get; set; }

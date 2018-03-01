@@ -3,7 +3,7 @@ using Application.Infrastructure.Identity;
 
 namespace Application.Core.Entities
 {
-    public class Post: TrackDateEntity
+    public class Post: TrackEntity
     {
         public string Name { get; set; }
         public string Description { get; set; }
