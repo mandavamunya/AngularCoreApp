@@ -30,10 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\Api\FileManager\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Application.Core\Application.Core.csproj" />
     <ProjectReference Include="..\Application.Infrastructure\Application.Infrastructure.csproj" />
     <ProjectReference Include="..\Application.Extensions\Application.Extensions.csproj" />

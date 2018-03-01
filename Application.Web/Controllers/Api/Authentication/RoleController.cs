@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Application.Extensions.Math.Generic;
 using Application.Infrastructure.Data;
 using Application.Infrastructure.Identity;
 using Application.Web.ViewModels;
