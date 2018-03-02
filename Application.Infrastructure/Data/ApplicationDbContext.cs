@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Application.Core.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Infrastructure.Data
 {
@@ -8,8 +9,13 @@ namespace Application.Infrastructure.Data
         {
         }
 
+        public DbSet<Blog> Blogs { get; set; }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<JournoRanking> JournoRankings { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
+
         }
 
     }
