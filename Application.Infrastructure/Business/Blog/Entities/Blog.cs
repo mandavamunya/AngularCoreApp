@@ -4,7 +4,7 @@ namespace Application.Core.Entities
 {
     public class Blog: TrackEntity
     {
-        public string Title { get; set; }
+        public string Name { get; set; }
         public bool IsPublished { get; set; }
        
         public ICollection<Post> Posts { get; set; }

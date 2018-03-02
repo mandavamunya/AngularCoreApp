@@ -2,6 +2,7 @@ using System;
 using Application.Core.Interfaces;
 using Application.Infrastructure.Data;
 using Application.Infrastructure.Identity;
+using Application.Infrastructure.Logging;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -14,6 +15,7 @@ namespace Application.Web
 {
     public class Startup
     {
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -59,8 +61,7 @@ namespace Application.Web
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
             services.AddScoped(typeof(IAsyncRepository<>), typeof(EfRepository<>));
 
-
-            //services.AddScoped(typeof(IAppLogger<>), typeof(LoggerAdapter<>));
+            services.AddScoped(typeof(IAppLogger<>), typeof(LoggerAdapter<>));
             //services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddMvc();
@@ -83,6 +84,7 @@ namespace Application.Web
             }
 
             app.UseStaticFiles();
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {
