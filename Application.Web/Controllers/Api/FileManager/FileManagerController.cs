@@ -14,23 +14,23 @@ namespace Application.Web.Controllers.Api
         {
         }
 
-        [HttpPost("Upload")]
-        public async Task<IActionResult> UploadFiles([FromForm]ICollection<IFormFile> fileList)
-        {
-            var files = Request.Form.Files;
+        //[HttpPost("Upload")]
+        //public async Task<IActionResult> UploadFiles([FromForm]ICollection<IFormFile> fileList)
+        //{
+        //    var files = Request.Form.Files;
 
-            try
-            {
-                foreach (var file in files)
-                {
-                    //_fileProcessor.CreateFile(file);
-                }
-                return Ok("File Uploaded.");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+        //    try
+        //    {
+        //        foreach (var file in files)
+        //        {
+        //            //_fileProcessor.CreateFile(file);
+        //        }
+        //        return Ok("File Uploaded.");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return BadRequest(ex.Message);
+        //    }
+        //}
     }
 }

@@ -15,9 +15,9 @@ namespace Application.Web.Controllers.Api.Blog
         {
         }
 
-        public async Task<IActionResult> GetPostsByType(int type)
-        {
-            throw new NotImplementedException();
-        }
+        //public async Task<IActionResult> GetPostsByType(int type)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }
