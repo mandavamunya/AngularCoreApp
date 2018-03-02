@@ -1,15 +1,18 @@
 using System;
+using System.IO;
 using Application.Core.Interfaces;
 using Application.Infrastructure.Data;
 using Application.Infrastructure.Identity;
 using Application.Infrastructure.Logging;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 
 namespace Application.Web
 {
@@ -84,6 +87,20 @@ namespace Application.Web
             }
 
             app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot", "Files")),
+                RequestPath = new PathString("/files")
+            });
+
+            app.UseDirectoryBrowser(new DirectoryBrowserOptions()
+            {
+                FileProvider = new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot", "Browser")),
+                RequestPath = new PathString("/browser")
+            });
+
             app.UseAuthentication();
 
             app.UseMvc(routes =>
