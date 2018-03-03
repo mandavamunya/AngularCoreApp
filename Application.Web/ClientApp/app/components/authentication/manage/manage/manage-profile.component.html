@@ -1,0 +1,34 @@
+<h4>Profile</h4>
+<div class="row">
+    <div class="col-md-6">
+
+        <p *ngIf="!model"><em>Loading...</em></p>
+
+        <div *ngIf="model">
+            <div class="form-group">
+                <label>Firstname</label>
+                <input type="text" [(ngModel)]="model.firstName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Lastname</label>
+                <input type="text" [(ngModel)]="model.lastName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" disabled [(ngModel)]="model.username" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" [(ngModel)]="model.email" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" [(ngModel)]="model.phoneNumber" class="form-control" />
+            </div>
+            
+            <button class="btn btn-default" (click)="onSave(model)">Save</button>
+            <button class="btn btn-default" (click)="onDelete(model)">Delete</button>
+        </div>
+
+    </div>
+</div>

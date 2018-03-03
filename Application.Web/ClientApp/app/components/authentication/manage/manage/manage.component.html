@@ -1,0 +1,42 @@
+<div class="row">
+    <!--
+    <div class="col-md-3">
+        <ul class="nav nav-pills nav-stacked" *ngFor="let option of options" (click)="onSelect(option)">
+            <li><a [class.selected]="option === selectedOption" *ngIf="hasAccess(option.selection)">{{ option.selection }}</a></li>
+        </ul>    
+    </div>
+    -->
+    <div class="col-md-3">
+        <ul class="nav nav-pills nav-stacked">
+            <li>
+                <a [class.selected]="options[0] === selectedOption" (click)="onSelect(options[0])">{{ options[0].selection }}</a>
+            </li>
+            <li>
+                <a [class.selected]="options[1] === selectedOption" (click)="onSelect(options[1])">{{ options[1].selection }}</a>
+            </li>
+            <li *ngIf="roleService.administrator || roleService.developer">
+                <a [class.selected]="options[2] === selectedOption" (click)="onSelect(options[2])">{{ options[2].selection }}</a>
+            </li>
+            <li *ngIf="roleService.administrator || roleService.developer">
+                <a [class.selected]="options[3] === selectedOption" (click)="onSelect(options[3])">{{ options[3].selection }}</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="col-md-9" *ngIf="selectedOption==options[0]">
+        <manage-profile></manage-profile>
+    </div>
+
+    <div class="col-md-9" *ngIf="selectedOption==options[1]">
+        <change-password></change-password>
+    </div>
+
+    <div class="col-md-9" *ngIf="selectedOption==options[2] && (roleService.administrator || roleService.developer)">
+        <two-factor-authentication></two-factor-authentication>
+    </div>
+
+    <div class="col-md-9" *ngIf="selectedOption==options[3] && (roleService.administrator || roleService.developer)">
+        <manage-roles></manage-roles>
+    </div>
+</div>

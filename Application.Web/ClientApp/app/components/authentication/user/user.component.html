@@ -1,0 +1,10 @@
+<h2>Manage account</h2>
+<div>
+    <h4>Change account settings</h4>
+    <hr>
+    <p *ngIf="!user"> <em>Loading...</em> </p>
+    <div *ngIf="user">
+        <manage></manage>
+    </div>
+    <button (click)="gotoUsers()" class="btn btn-primary">Back</button>
+</div>
