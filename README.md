@@ -2,6 +2,7 @@
 Angular 4 and .Net Core 2.0 Architecture
 
 Step 1:
+
 dotnet restore 
  
 Step 2: create migration (from Web folder CLI):
