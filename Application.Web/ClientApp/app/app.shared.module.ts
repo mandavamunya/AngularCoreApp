@@ -113,6 +113,7 @@ const routes: Routes = [
         UserService,
         RoleService,
         ManageService,
+        MessageService,
         AccountService
     ]
 })
