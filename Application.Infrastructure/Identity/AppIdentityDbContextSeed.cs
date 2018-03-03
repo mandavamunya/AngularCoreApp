@@ -16,7 +16,8 @@ namespace Application.Infrastructure.Identity
             _userManager = userManager;
         }
 
-        public static async Task SeedAsync(UserManager<ApplicationUser> userManager)
+        public static async Task SeedAsync(
+            UserManager<ApplicationUser> userManager)
         {
             var defaultUser = new ApplicationUser
             {

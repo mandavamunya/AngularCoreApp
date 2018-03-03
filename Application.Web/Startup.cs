@@ -48,8 +48,9 @@ namespace Application.Web
             });
 
             // Add Identity DbContext
+            var identityConnection = Configuration.GetConnectionString("IdentityConnection");
             services.AddDbContext<AppIdentityDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
+                options.UseSqlServer(identityConnection));
 
             ConfigureServices(services);
         }
@@ -73,6 +74,17 @@ namespace Application.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+
+            env.WebRootPath =
+                    Path.Combine(
+                    Directory.GetCurrentDirectory(),
+                    @"wwwroot/Files");
+            if (!Directory.Exists(env.WebRootPath))
+            {
+                DirectoryInfo directoryInfo =
+                    Directory.CreateDirectory(env.WebRootPath);
+            }
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -94,12 +106,12 @@ namespace Application.Web
                 RequestPath = new PathString("/files")
             });
 
-            app.UseDirectoryBrowser(new DirectoryBrowserOptions()
-            {
-                FileProvider = new PhysicalFileProvider(
-                    Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot", "Browser")),
-                RequestPath = new PathString("/browser")
-            });
+            //app.UseDirectoryBrowser(new DirectoryBrowserOptions()
+            //{
+            //    FileProvider = new PhysicalFileProvider(
+            //        Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot", "Browser")),
+            //    RequestPath = new PathString("/browser")
+            //});
 
             app.UseAuthentication();
 

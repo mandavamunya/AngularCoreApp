@@ -5,10 +5,11 @@ namespace Application.Infrastructure.Identity
 {
     public class AppIdentityDbContext : IdentityDbContext<ApplicationUser>
     {
-        public AppIdentityDbContext(DbContextOptions<IdentityDbContext> options)
+        public AppIdentityDbContext(DbContextOptions<AppIdentityDbContext> options)
             : base(options)
         {
         }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
