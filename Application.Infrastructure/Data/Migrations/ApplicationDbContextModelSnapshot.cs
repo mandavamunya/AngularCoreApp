@@ -60,7 +60,7 @@ namespace Application.Infrastructure.Data.Migrations
 
                     b.HasIndex("ApplicationUserId");
 
-                    b.ToTable("JournoRankings");
+                    b.ToTable("JournoRanking");
                 });
 
             modelBuilder.Entity("Application.Core.Entities.Post", b =>
@@ -132,6 +132,8 @@ namespace Application.Infrastructure.Data.Migrations
 
                     b.Property<string>("SecurityStamp");
 
+                    b.Property<int>("Team");
+
                     b.Property<bool>("TwoFactorEnabled");
 
                     b.Property<string>("UserName");
@@ -144,7 +146,7 @@ namespace Application.Infrastructure.Data.Migrations
             modelBuilder.Entity("Application.Core.Entities.JournoRanking", b =>
                 {
                     b.HasOne("Application.Infrastructure.Identity.ApplicationUser", "ApplicationUser")
-                        .WithMany()
+                        .WithMany("JournoRankings")
                         .HasForeignKey("ApplicationUserId");
                 });
 

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Application.Infrastructure.Identity.Migrations
 {
-    public partial class InitialIdentity : Migration
+    public partial class InitialIdentityModel : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -42,6 +42,7 @@ namespace Application.Infrastructure.Identity.Migrations
                     PhoneNumber = table.Column<string>(nullable: true),
                     PhoneNumberConfirmed = table.Column<bool>(nullable: false),
                     SecurityStamp = table.Column<string>(nullable: true),
+                    Team = table.Column<int>(nullable: false),
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
                     UserName = table.Column<string>(maxLength: 256, nullable: true)
                 },
@@ -157,7 +158,7 @@ namespace Application.Infrastructure.Identity.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "JournoRanking",
+                name: "JournoRankings",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -171,9 +172,9 @@ namespace Application.Infrastructure.Identity.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_JournoRanking", x => x.Id);
+                    table.PrimaryKey("PK_JournoRankings", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_JournoRanking_AspNetUsers_ApplicationUserId",
+                        name: "FK_JournoRankings_AspNetUsers_ApplicationUserId",
                         column: x => x.ApplicationUserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -220,8 +221,8 @@ namespace Application.Infrastructure.Identity.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_JournoRanking_ApplicationUserId",
-                table: "JournoRanking",
+                name: "IX_JournoRankings_ApplicationUserId",
+                table: "JournoRankings",
                 column: "ApplicationUserId");
         }
 
@@ -243,7 +244,7 @@ namespace Application.Infrastructure.Identity.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "JournoRanking");
+                name: "JournoRankings");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

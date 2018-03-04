@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Application.Infrastructure.Data.Migrations
 {
-    public partial class Initial : Migration
+    public partial class InitialApplicationModel : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,6 +28,7 @@ namespace Application.Infrastructure.Data.Migrations
                     PhoneNumber = table.Column<string>(nullable: true),
                     PhoneNumberConfirmed = table.Column<bool>(nullable: false),
                     SecurityStamp = table.Column<string>(nullable: true),
+                    Team = table.Column<int>(nullable: false),
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
                     UserName = table.Column<string>(nullable: true)
                 },
@@ -53,7 +54,7 @@ namespace Application.Infrastructure.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "JournoRankings",
+                name: "JournoRanking",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -67,9 +68,9 @@ namespace Application.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_JournoRankings", x => x.Id);
+                    table.PrimaryKey("PK_JournoRanking", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_JournoRankings_ApplicationUser_ApplicationUserId",
+                        name: "FK_JournoRanking_ApplicationUser_ApplicationUserId",
                         column: x => x.ApplicationUserId,
                         principalTable: "ApplicationUser",
                         principalColumn: "Id",
@@ -112,8 +113,8 @@ namespace Application.Infrastructure.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_JournoRankings_ApplicationUserId",
-                table: "JournoRankings",
+                name: "IX_JournoRanking_ApplicationUserId",
+                table: "JournoRanking",
                 column: "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
@@ -130,7 +131,7 @@ namespace Application.Infrastructure.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "JournoRankings");
+                name: "JournoRanking");
 
             migrationBuilder.DropTable(
                 name: "Posts");

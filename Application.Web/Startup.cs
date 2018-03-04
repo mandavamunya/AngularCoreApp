@@ -1,9 +1,14 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
+using Application.Core.Entities;
 using Application.Core.Interfaces;
 using Application.Infrastructure.Data;
 using Application.Infrastructure.Identity;
 using Application.Infrastructure.Logging;
+using Application.Models.PublicationViewModel;
+using Application.Models.UserViewModel;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -69,11 +74,20 @@ namespace Application.Web
             //services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddMvc();
+            services.AddAutoMapper();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+
+            var autoConfig = new MapperConfiguration(config => {
+                config.CreateMap<ApplicationUserViewModel, ApplicationUser>().ReverseMap();
+                config.CreateMap<List<ApplicationUserViewModel>, List<ApplicationUser>>().ReverseMap();
+                config.CreateMap<JournoRanking, JournoRankingViewModel>().ReverseMap();
+                config.CreateMap<List<JournoRanking>, List<JournoRankingViewModel>>().ReverseMap();
+
+            });
 
             env.WebRootPath =
                     Path.Combine(

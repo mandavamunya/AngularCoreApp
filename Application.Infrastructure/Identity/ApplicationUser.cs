@@ -1,4 +1,5 @@
 ﻿using Application.Core.Entities;
+using Application.Core.Enums;
 using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 
@@ -8,7 +9,8 @@ namespace Application.Infrastructure.Identity
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public Team Team { get; set; }
 
-        public ICollection<JournoRanking> JournalistRankings { get; set; }
+        public ICollection<JournoRanking> JournoRankings { get; set; }
     }
 }

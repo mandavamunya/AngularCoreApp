@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Application.Core.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Infrastructure.Identity
@@ -9,6 +10,9 @@ namespace Application.Infrastructure.Identity
             : base(options)
         {
         }
+
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<JournoRanking> JournoRankings { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
