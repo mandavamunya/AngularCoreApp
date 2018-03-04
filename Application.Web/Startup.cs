@@ -6,6 +6,7 @@ using Application.Core.Interfaces;
 using Application.Infrastructure.Data;
 using Application.Infrastructure.Identity;
 using Application.Infrastructure.Logging;
+using Application.Infrastructure.Services;
 using Application.Models.PublicationViewModel;
 using Application.Models.UserViewModel;
 using AutoMapper;
@@ -71,7 +72,8 @@ namespace Application.Web
             services.AddScoped(typeof(IAsyncRepository<>), typeof(EfRepository<>));
 
             services.AddScoped(typeof(IAppLogger<>), typeof(LoggerAdapter<>));
-            //services.AddTransient<IEmailSender, EmailSender>();
+
+            services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddMvc();
             services.AddAutoMapper();
