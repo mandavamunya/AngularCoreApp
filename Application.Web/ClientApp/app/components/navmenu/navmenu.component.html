@@ -19,13 +19,13 @@
                     </a>
                 </li>
 
-                <li [routerLinkActive]="['link-active']" *ngIf="userService.user">
+                <li [routerLinkActive]="['link-active']" *ngIf="isLoggedIn(userService.user)">
                     <a [routerLink]="['/manage-account']">
                         <span class='glyphicon glyphicon-user'></span> Manage Account
                     </a>
                 </li>
 
-                <li [routerLinkActive]="['link-active']" *ngIf="userService.user && (roleService.administrator || roleService.developer)">
+                <li [routerLinkActive]="['link-active']" *ngIf="isLoggedIn(userService.user) && (roleService.administrator || roleService.developer)">
                     <a [routerLink]="['/users']">
                         <span class='glyphicon glyphicon-user'></span> Manage Users
                     </a>

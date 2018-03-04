@@ -16,18 +16,18 @@
 
 
         <ul class="nav navbar-nav navbar-right">
-            <li [routerLinkActive]="['active']" *ngIf="!userService.user">
+            <li [routerLinkActive]="['active']" *ngIf="!isLoggedIn(userService.user)">
                 <a [routerLink]="['/register']">
                     <span class='glyphicon glyphicon-user'></span> Sign Up
                 </a>
             </li>
-            <li [routerLinkActive]="['active']" *ngIf="!userService.user">
+            <li [routerLinkActive]="['active']" *ngIf="!isLoggedIn(userService.user)">
                 <a [routerLink]="['/login']">
                     <span class='glyphicon glyphicon-log-in'></span> Login
                 </a>
             </li>
             <li>
-                <a (click)="logout()" *ngIf="userService.user">
+                <a (click)="logout()" *ngIf="isLoggedIn(userService.user)">
                     <span class="glyphicon glyphicon-log-out"></span> Logout</a>
             </li>
         </ul>

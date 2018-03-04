@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using Application.Infrastructure.Identity;
@@ -38,29 +39,37 @@ namespace Application.Web.Controllers.Api.Authentication
 
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IndexViewModel> Index()
         {
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return BadRequest($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                //return BadRequest($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
-            var roles = await _userManager.GetRolesAsync(user);
+            var model = new IndexViewModel();
+            string role = null;
 
-            var model = new IndexViewModel
+            if (user != null)
             {
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Username = user.UserName,
-                Email = user.Email,
-                PhoneNumber = user.PhoneNumber,
-                IsEmailConfirmed = user.EmailConfirmed,
-                StatusMessage = StatusMessage,
-                Role = roles.ToList()[0]
-            };
+                var roles = await _userManager.GetRolesAsync(user);
+                if (roles.Count != 0)
+                    role = roles.ToList()[0];
 
-            return Ok(model);
+                model = new IndexViewModel
+                {
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Username = user.UserName,
+                    Email = user.Email,
+                    PhoneNumber = user.PhoneNumber,
+                    IsEmailConfirmed = user.EmailConfirmed,
+                    StatusMessage = StatusMessage,
+                    Role = role
+                };
+            }
+
+            return model;
         }
 
         [HttpGet("ChangePassword")]

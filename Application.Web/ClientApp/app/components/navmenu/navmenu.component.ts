@@ -36,13 +36,24 @@ export class NavMenuComponent implements OnInit {
     {
         this.userService.getProfile()
         .subscribe(
-            (data) =>  { 
+            (data) =>  
+            { 
                 this.user = data;
                 this.userService.accessLevel = this.user.role;
                 this.roleService.setRole(); 
             },
-            (error) => error 
+            (error) => 
+            { 
+            }
         );                
+    }
+
+    isLoggedIn(user: User)
+    {
+        if (user.email == undefined)
+            return false;
+        else
+            return true; 
     }
 
 }

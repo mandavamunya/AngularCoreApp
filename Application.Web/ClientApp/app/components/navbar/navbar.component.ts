@@ -59,5 +59,13 @@ export class NavBarComponent implements OnInit {
         );
     }
 
+    isLoggedIn(user: User)
+    {
+        if (user.email == undefined)
+            return false;
+        else
+            return true; 
+    }    
+
 }
 

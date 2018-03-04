@@ -15,8 +15,9 @@ import { MessageService } from './components/services/message.service';
 import { RoleService } from './components/services/role.service';
 
 import { AppComponent } from './components/app/app.component';
-import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
+import { NavBarComponent } from './components/navbar/navbar.component';
+import { NavMenuComponent } from './components/navmenu/navmenu.component';
 
 import { ExternalLoginComponent } from './components/authentication/account/external-login/external-login.component';
 import { ForgotPasswordComponent } from './components/authentication/account/forgot-password/forgot-password.component';
@@ -73,9 +74,10 @@ const routes: Routes = [
 @NgModule({
     declarations: [
         AppComponent,
-        NavMenuComponent,
         HomeComponent,
-    
+        NavBarComponent,
+        NavMenuComponent,
+
         ExternalLoginComponent,
         ForgotPasswordComponent,
         LoginComponent,
