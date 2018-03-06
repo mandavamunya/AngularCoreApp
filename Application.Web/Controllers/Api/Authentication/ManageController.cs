@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using Application.Infrastructure.Identity;
@@ -54,7 +53,7 @@ namespace Application.Web.Controllers.Api.Authentication
             {
                 var roles = await _userManager.GetRolesAsync(user);
                 if (roles.Count != 0)
-                    role = roles.ToList()[0];
+                    role = roles.ToList().FirstOrDefault();
 
                 model = new IndexViewModel
                 {

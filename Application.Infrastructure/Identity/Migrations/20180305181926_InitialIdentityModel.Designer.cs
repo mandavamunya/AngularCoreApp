@@ -12,7 +12,7 @@ using System;
 namespace Application.Infrastructure.Identity.Migrations
 {
     [DbContext(typeof(AppIdentityDbContext))]
-    [Migration("20180304132410_InitialIdentityModel")]
+    [Migration("20180305181926_InitialIdentityModel")]
     partial class InitialIdentityModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

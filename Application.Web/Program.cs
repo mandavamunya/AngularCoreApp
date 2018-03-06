@@ -25,7 +25,8 @@ namespace Application.Web
                     //ApplicationDbContextSeed.SeedAsync(applicationDbContext, loggerFactory).Wait();
 
                     var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
-                    AppIdentityDbContextSeed.SeedAsync(userManager).Wait();
+                    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+                    AppIdentityDbContextSeed.SeedAsync(roleManager, userManager).Wait();
                 }
                 catch (Exception ex)
                 {

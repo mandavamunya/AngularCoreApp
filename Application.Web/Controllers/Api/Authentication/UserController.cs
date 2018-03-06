@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using Application.Models.UserViewModel;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Authorization;
 using Application.Infrastructure.Identity;
 
 namespace Application.Controllers.Api

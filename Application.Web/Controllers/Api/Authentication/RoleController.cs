@@ -64,7 +64,7 @@ namespace Application.Web.Controllers.Api.Authentication
             if (roles.Count == 0)
                 return Ok(model);
 
-            model.Role = roles.ToList()[0];
+            model.Role = roles.ToList().FirstOrDefault();
 
             return Ok(model);
         }
