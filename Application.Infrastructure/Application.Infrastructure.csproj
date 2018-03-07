@@ -22,9 +22,5 @@
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.1" />
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.1" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Business\Blog\Repository\" />
-  </ItemGroup>
   
 </Project>
