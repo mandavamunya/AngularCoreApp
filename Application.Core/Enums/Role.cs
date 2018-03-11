@@ -2,6 +2,6 @@
 {
     public enum Role
     {
-        Developer, Administrator, Manager, Journalist, Editor
+        None, Developer, Administrator, Manager, Journalist, Editor
     }
 }

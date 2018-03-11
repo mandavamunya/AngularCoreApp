@@ -5,6 +5,7 @@ namespace Application.Core.Interfaces
 {
     public interface IPostService
     {
+        Task<Post> GetPostById(int postId);
         Task CreatePostAsync(Post post);
         Task SetPostAsync(Post post);
         Task DeletePostAsync(Post post);

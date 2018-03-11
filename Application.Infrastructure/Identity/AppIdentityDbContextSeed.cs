@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Application.Core.Enums;
+using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 
 namespace Application.Infrastructure.Identity
@@ -40,7 +41,8 @@ namespace Application.Infrastructure.Identity
                     FirstName = "John",
                     LastName = "Doe",
                     UserName = "johndoe@email.com",
-                    Email = "johndoe@email.com"
+                    Email = "johndoe@email.com",
+                    Role = Role.Developer
                 };
 
                 await userManager.CreateAsync(defaultUser, "P@ssw0rd!");
@@ -55,7 +57,8 @@ namespace Application.Infrastructure.Identity
                     FirstName = "TestFirstName",
                     LastName = "TestLastName",
                     UserName = "test@email.com",
-                    Email = "test@email.com"
+                    Email = "test@email.com",
+                    Role = Role.Journalist
                 };
                 await userManager.CreateAsync(user, "P@ssw0rd!");
                 await userManager.AddToRoleAsync(user, "Journalist");

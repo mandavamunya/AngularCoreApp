@@ -13,7 +13,6 @@ import { User, UserViewModel } from '../../interfaces/user.interface';
 export class UserComponent implements OnInit {
     user: UserViewModel = <UserViewModel>{};
     model: User = <User>{};
-    private email: string;
 
     constructor(
         private http: Http,
@@ -23,7 +22,6 @@ export class UserComponent implements OnInit {
         @Inject('BASE_URL') private baseUrl: string
     ) 
     {
-        this.email = route.snapshot.params.email;
     }
 
     ngOnInit(): void
@@ -35,6 +33,7 @@ export class UserComponent implements OnInit {
     {
         this.http.get(this.baseUrl + 'api/User/' + this.userService.selectedUser.username).subscribe(result => {
             this.user = result.json() as UserViewModel;
+            this.userService.selectedUser = this.user;
         }, error => console.error(error));
     }
 

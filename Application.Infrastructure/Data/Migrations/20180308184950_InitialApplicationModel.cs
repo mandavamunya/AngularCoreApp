@@ -27,6 +27,7 @@ namespace Application.Infrastructure.Data.Migrations
                     PasswordHash = table.Column<string>(nullable: true),
                     PhoneNumber = table.Column<string>(nullable: true),
                     PhoneNumberConfirmed = table.Column<bool>(nullable: false),
+                    Role = table.Column<int>(nullable: false),
                     SecurityStamp = table.Column<string>(nullable: true),
                     Team = table.Column<int>(nullable: false),
                     TwoFactorEnabled = table.Column<bool>(nullable: false),

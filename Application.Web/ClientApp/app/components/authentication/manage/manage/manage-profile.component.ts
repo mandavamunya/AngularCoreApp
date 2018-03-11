@@ -22,8 +22,6 @@ export class ManageProfileComponent implements OnInit {
   viewModel: UserViewModel = <UserViewModel>{};
   model: User = <User>{};
 
-  private email: string = "";
-
   constructor(
     private http: Http,
     private router: Router,
@@ -34,11 +32,11 @@ export class ManageProfileComponent implements OnInit {
     @Inject("BASE_URL") private baseUrl: string
   ) 
   {
-    this.email = route.snapshot.params.email;
   }
 
   ngOnInit(): void {
-    if (this.email == null || this.email == "")
+    if (this.userService.selectedUser.email == null
+    || this.userService.selectedUser.email == "")
       this.getLoggedInUser();
     else 
       this.getUser();
@@ -58,7 +56,7 @@ export class ManageProfileComponent implements OnInit {
 
   getUser(): void
   {
-      this.userService.getUser(this.email).subscribe(
+      this.userService.getUser(this.userService.selectedUser.email).subscribe(
         (data) => 
         {
           this.viewModel = data as UserViewModel;

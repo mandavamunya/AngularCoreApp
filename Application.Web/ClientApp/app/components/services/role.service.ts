@@ -16,6 +16,7 @@ export class RoleService {
     {
 
     }
+    public none: boolean = <boolean>{};
     public developer: boolean = <boolean>{};
     public journalist: boolean = <boolean>{};
     public administrator: boolean = <boolean>{};
@@ -25,6 +26,7 @@ export class RoleService {
     reset()
     {
         this.userService.accessLevel = "";
+        this.none = false;
         this.developer = false;
         this.journalist = false;
         this.administrator = false;
@@ -34,7 +36,9 @@ export class RoleService {
 
     setRole()
     {
-        if (this.userService.accessLevel == "Developer")
+        if (this.userService.accessLevel == "None")
+            this.none = true;
+        else if (this.userService.accessLevel == "Developer")
             this.developer = true;
         else if (this.userService.accessLevel == "Journalist")
             this.journalist = true;

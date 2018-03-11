@@ -1,6 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Application.Core.Entities;
 using Application.Core.Interfaces;
+using Application.Core.Specifications;
 
 namespace Application.Core.Services
 {
@@ -26,6 +28,17 @@ namespace Application.Core.Services
         public async Task DeleteBlogAsync(Blog blog)
         {
             await _blogRepository.DeleteAsync(blog);
+        }
+
+        public async Task<IEnumerable<Blog>> GetAllBlogItems(int blogId)
+        {
+            var spec = new BlogWithItemsSpecification(blogId);
+            return await _blogRepository.ListAsync(spec);
+        }
+
+        public async Task<Blog> GetBlogById(int blogId)
+        {
+            return await _blogRepository.GetByIdAsync(blogId);
         }
 
         public async Task SetBogAsync(Blog blog)

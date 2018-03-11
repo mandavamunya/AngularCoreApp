@@ -28,6 +28,11 @@ namespace Application.Core.Services
             await _journoRankingsRepository.DeleteAsync(journoRanking);
         }
 
+        public async Task<JournoRanking> GetJournoRankingById(int journoRankingId)
+        {
+            return await _journoRankingsRepository.GetByIdAsync(journoRankingId);
+        }
+
         public async Task SetJournoRankingAsync(JournoRanking journoRanking)
         {
             await _journoRankingsRepository.UpdateAsync(journoRanking);

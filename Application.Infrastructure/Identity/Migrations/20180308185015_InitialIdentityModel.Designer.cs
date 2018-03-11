@@ -12,7 +12,7 @@ using System;
 namespace Application.Infrastructure.Identity.Migrations
 {
     [DbContext(typeof(AppIdentityDbContext))]
-    [Migration("20180305181926_InitialIdentityModel")]
+    [Migration("20180308185015_InitialIdentityModel")]
     partial class InitialIdentityModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -80,6 +80,8 @@ namespace Application.Infrastructure.Identity.Migrations
                     b.Property<string>("PhoneNumber");
 
                     b.Property<bool>("PhoneNumberConfirmed");
+
+                    b.Property<int>("Role");
 
                     b.Property<string>("SecurityStamp");
 

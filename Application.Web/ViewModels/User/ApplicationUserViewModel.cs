@@ -25,6 +25,8 @@ namespace Application.Models.UserViewModel
 
         public Team Team { get; set; }
 
+        public Role Role { get; set; }
+
         public List<JournoRankingViewModel> JournoRankings { get; set; }
     }
 }

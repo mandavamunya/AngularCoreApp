@@ -28,6 +28,11 @@ namespace Application.Core.Services
             await _postRepository.DeleteAsync(post);
         }
 
+        public async Task<Post> GetPostById(int postId)
+        {
+            return await _postRepository.GetByIdAsync(postId);
+        }
+
         public async Task SetPostAsync(Post post)
         {
             await _postRepository.UpdateAsync(post);

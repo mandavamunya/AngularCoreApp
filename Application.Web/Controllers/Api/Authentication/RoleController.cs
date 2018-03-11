@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Application.Core.Enums;
 using Application.Extensions.Math.Generic;
 using Application.Infrastructure.Data;
 using Application.Infrastructure.Identity;
@@ -43,7 +45,7 @@ namespace Application.Web.Controllers.Api.Authentication
 
             var roles = await _userManager.GetRolesAsync(user);
             model.Username = user.UserName;
-            model.Role = roles.ToList()[0];
+            model.Role = roles.ToList().FirstOrDefault();
 
             return Ok(model);
         }
@@ -124,7 +126,11 @@ namespace Application.Web.Controllers.Api.Authentication
 
             var roles = _roleManager.Roles.ToList();
             if (RolesListOfStrings(roles).Contains(model.Role))
+            {
+                user.Role = (Role)Enum.Parse(typeof(Role), model.Role);
                 await _userManager.AddToRoleAsync(user, model.Role);
+                _context.SaveChanges();
+            }
             else
                 return BadRequest("Select a role to assign.");
 
@@ -158,6 +164,7 @@ namespace Application.Web.Controllers.Api.Authentication
             if (user == null)
                 return NotFound("User not Found.");
 
+            user.Role = Role.None;
             await _userManager.RemoveFromRoleAsync(user, model.Role);
             return Ok("Role has been removed.");
         }

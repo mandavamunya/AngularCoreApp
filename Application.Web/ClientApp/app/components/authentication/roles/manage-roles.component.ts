@@ -17,19 +17,20 @@ export class ManageRolesComponent implements OnInit {
   user: UserRole = <UserRole>{};
   roles: string[] = [];
   selectedRole: string = <string>{};
-  
-  email: string;
 
   constructor(
     private route: ActivatedRoute,
     private userService: UserService,
     private alert: MessageService
-  ) {
-    this.email = route.snapshot.params.email;
+  ) 
+  {
   }
 
-  ngOnInit() {
-    if (this.email == null || this.email == "") { 
+  ngOnInit() 
+  {
+    if (this.userService.selectedUser.email == null 
+      || this.userService.selectedUser.email == "") 
+    { 
       this.getUserRoles()
       this.getOtherRoles();
     } else {
@@ -78,28 +79,31 @@ export class ManageRolesComponent implements OnInit {
     );
   }
 
-  getUserRoles() {
+  getUserRoles() 
+  {
     this.userService.UserRoles().subscribe(
       data => this.user = data,
       error => this.alert.setMessage(error, "danger") 
     );
   }
 
-  getUserRolesByUsername() {
-    this.userService.UserRolesByUsername(this.email).subscribe(
+  getUserRolesByUsername() 
+  {
+    this.userService.UserRolesByUsername(this.userService.selectedUser.email).subscribe(
       data => this.user = data,
       error => this.alert.setMessage(error,"danger")
     );
   }
 
   getOtherRolesByUsername() {
-    this.userService.OtherRolesByUsername(this.email).subscribe(
+    this.userService.OtherRolesByUsername(this.userService.selectedUser.email).subscribe(
       data => this.roles = data,
       error => this.alert.setMessage(error, "danger") 
     );
   }
 
-  getOtherRoles() {
+  getOtherRoles() 
+  {
     this.userService.OtherRoles().subscribe(
       data => this.roles = data,
       error => this.alert.setMessage(error, "danger")
@@ -108,7 +112,8 @@ export class ManageRolesComponent implements OnInit {
   
   toUserWithSingleRole(username: string, role: string)
   {
-    const user: UserRole = {  
+    const user: UserRole = 
+    {  
       username: username,
       role: role
     }

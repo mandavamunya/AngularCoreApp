@@ -130,6 +130,8 @@ namespace Application.Infrastructure.Data.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed");
 
+                    b.Property<int>("Role");
+
                     b.Property<string>("SecurityStamp");
 
                     b.Property<int>("Team");
