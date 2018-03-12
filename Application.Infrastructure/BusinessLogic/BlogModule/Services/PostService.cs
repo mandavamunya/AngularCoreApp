@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Application.Core.Entities;
 using Application.Core.Interfaces;
+using Ardalis.GuardClauses;
 
 namespace Application.Core.Services
 {
@@ -30,11 +31,14 @@ namespace Application.Core.Services
 
         public async Task<Post> GetPostById(int postId)
         {
-            return await _postRepository.GetByIdAsync(postId);
+            var post = await _postRepository.GetByIdAsync(postId);
+            Guard.Against.NullPost(postId, post);
+            return post;
         }
 
         public async Task SetPostAsync(Post post)
         {
+            Guard.Against.Null(post, nameof(post));
             await _postRepository.UpdateAsync(post);
         }
     }

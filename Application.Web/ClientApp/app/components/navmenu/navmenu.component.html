@@ -19,6 +19,12 @@
                     </a>
                 </li>
 
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/blog']">
+                        <span class='glyphicon glyphicon-home'></span> Blog
+                    </a>
+                </li>
+
                 <li [routerLinkActive]="['link-active']" *ngIf="isLoggedIn(userService.user)">
                     <a [routerLink]="['/manage-account']">
                         <span class='glyphicon glyphicon-user'></span> Manage Account

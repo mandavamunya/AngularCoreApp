@@ -5,6 +5,22 @@ namespace Application.Core.Entities
 {
     public class Post: TrackEntity
     {
+        public Post(
+            string title, 
+            string description, 
+            string content, 
+            int views, 
+            int articles,
+            PostType type)
+        {
+            Title = title;
+            Description = description;
+            Content = content;
+            Views = views;
+            Articles = articles;
+            Type = type;
+        }
+
         public string Title { get; set; }
         public string Description { get; set; }
         public string Content { get; set; }

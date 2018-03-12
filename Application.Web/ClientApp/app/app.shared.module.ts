@@ -18,6 +18,7 @@ import { AppComponent } from './components/app/app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavBarComponent } from './components/navbar/navbar.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
+import { BlogComponent } from './components/business-logic/blog/blog.component';
 
 import { ExternalLoginComponent } from './components/authentication/account/external-login/external-login.component';
 import { ForgotPasswordComponent } from './components/authentication/account/forgot-password/forgot-password.component';
@@ -46,6 +47,7 @@ import { ManageRolesComponent } from './components/authentication/roles/manage-r
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
+    { path: 'blog', component: BlogComponent },
 
     { path: 'manage-account',  component: ManageAccountComponent },
     { path: 'external-login', component: ExternalLoginComponent },
@@ -77,6 +79,7 @@ const routes: Routes = [
         HomeComponent,
         NavBarComponent,
         NavMenuComponent,
+        BlogComponent,
 
         ExternalLoginComponent,
         ForgotPasswordComponent,
