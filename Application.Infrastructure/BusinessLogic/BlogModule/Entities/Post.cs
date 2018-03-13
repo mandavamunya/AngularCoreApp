@@ -5,6 +5,10 @@ namespace Application.Core.Entities
 {
     public class Post: TrackEntity
     {
+        public Post()
+        {
+        }
+
         public Post(
             string title, 
             string description, 

@@ -4,6 +4,10 @@ namespace Application.Core.Entities
 {
     public class Blog: TrackEntity
     {
+        public Blog()
+        {
+        }
+
         public Blog(string name, bool isPublished)
         {
             Name = name;
