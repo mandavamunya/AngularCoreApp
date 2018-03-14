@@ -8,7 +8,7 @@ using Application.Models.UserViewModel;
 using Microsoft.AspNetCore.Identity;
 using Application.Infrastructure.Identity;
 
-namespace Application.Controllers.Api
+namespace Application.Controllers
 {
     //[Authorize]
     [Produces("application/json")]

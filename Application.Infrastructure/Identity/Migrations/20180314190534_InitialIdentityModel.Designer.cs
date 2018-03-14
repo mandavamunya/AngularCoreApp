@@ -12,7 +12,7 @@ using System;
 namespace Application.Infrastructure.Identity.Migrations
 {
     [DbContext(typeof(AppIdentityDbContext))]
-    [Migration("20180308185015_InitialIdentityModel")]
+    [Migration("20180314190534_InitialIdentityModel")]
     partial class InitialIdentityModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,6 +21,24 @@ namespace Application.Infrastructure.Identity.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.0.1-rtm-125")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Application.Core.Entities.Blog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreateDate");
+
+                    b.Property<bool>("IsPublished");
+
+                    b.Property<string>("Name");
+
+                    b.Property<DateTime>("PublishDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Blogs");
+                });
 
             modelBuilder.Entity("Application.Core.Entities.JournoRanking", b =>
                 {
@@ -44,6 +62,42 @@ namespace Application.Infrastructure.Identity.Migrations
                     b.HasIndex("ApplicationUserId");
 
                     b.ToTable("JournoRankings");
+                });
+
+            modelBuilder.Entity("Application.Core.Entities.Post", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ApplicationUserId");
+
+                    b.Property<int>("Articles");
+
+                    b.Property<int>("BlogId");
+
+                    b.Property<int>("Comments");
+
+                    b.Property<string>("Content");
+
+                    b.Property<DateTime>("CreateDate");
+
+                    b.Property<string>("Description");
+
+                    b.Property<DateTime>("PublishDate");
+
+                    b.Property<string>("Title");
+
+                    b.Property<int>("Type");
+
+                    b.Property<int>("Views");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("BlogId");
+
+                    b.ToTable("Posts");
                 });
 
             modelBuilder.Entity("Application.Infrastructure.Identity.ApplicationUser", b =>
@@ -218,6 +272,18 @@ namespace Application.Infrastructure.Identity.Migrations
                     b.HasOne("Application.Infrastructure.Identity.ApplicationUser", "ApplicationUser")
                         .WithMany("JournoRankings")
                         .HasForeignKey("ApplicationUserId");
+                });
+
+            modelBuilder.Entity("Application.Core.Entities.Post", b =>
+                {
+                    b.HasOne("Application.Infrastructure.Identity.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("Application.Core.Entities.Blog", "Blog")
+                        .WithMany("Posts")
+                        .HasForeignKey("BlogId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

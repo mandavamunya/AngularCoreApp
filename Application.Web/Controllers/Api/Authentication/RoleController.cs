@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Application.Web.Controllers.Api.Authentication
+namespace Application.Web.Controllers
 {
     [Produces("application/json")]
     [Route("api/Role")]

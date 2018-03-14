@@ -6,9 +6,10 @@ namespace Application.Core.Interfaces
 {
     public interface IBlogService
     {
+        Task<IEnumerable<Blog>> GetAllBlogs();
         Task<IEnumerable<Blog>> GetAllBlogItems(int blogId);
         Task<Blog> GetBlogById(int blogId);
-        Task CreateBlogAsync(Blog blog);
+        Task AddBlogAsync(Blog blog);
         Task SetBogAsync(Blog blog);
         Task DeleteBlogAsync(Blog blog);
     }

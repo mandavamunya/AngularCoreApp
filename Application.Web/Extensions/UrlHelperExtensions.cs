@@ -1,4 +1,4 @@
-﻿using Application.Controllers.Api;
+﻿using Application.Controllers;
 
 namespace Microsoft.AspNetCore.Mvc
 {

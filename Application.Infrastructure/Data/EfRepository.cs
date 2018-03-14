@@ -3,15 +3,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Application.Core;
 using Application.Core.Interfaces;
+using Application.Infrastructure.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Infrastructure.Data
 {
     public class EfRepository<T> : IRepository<T>, IAsyncRepository<T> where T : BaseEntity
     {
-        private readonly ApplicationDbContext _dbContext;
+        private readonly AppIdentityDbContext _dbContext;
 
-        public EfRepository(ApplicationDbContext dbContext)
+        public EfRepository(AppIdentityDbContext dbContext)
         {
             _dbContext = dbContext;
         }

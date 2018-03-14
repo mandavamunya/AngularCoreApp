@@ -1,0 +1,31 @@
+<h2>Blog Manager</h2>
+<div>
+    <h4>Select blog</h4>
+    <hr>
+
+    <p *ngIf="!blogs"><em>Loading...</em></p>
+    <div class="table-responsive">
+        <table class="table" *ngIf="blogs">
+            <thead>
+                <th>Name</th>
+                <th>Create Date</th>
+                <th>Publish Date</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let blog of blogs" [class.selected]="blog === selectedBlog" (click)="onSelect(blog)">
+                    <td>{{blog.name}}</td>
+                    <td>{{blog.createDate}}</td>
+                    <td>{{blog.publishDate}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn btn-primary" (click)="Previous()" [disabled]="previous">Previous</button>
+        <button class="btn btn-primary" (click)="Next()" [disabled]="next">Next</button>
+    </div>
+    <div *ngIf="selectedUser">
+        <h2>
+            Selected: {{selectedBlog.name | uppercase}}
+        </h2>
+        <button (click)="gotoUser()" class="btn btn-primary">Change Details</button>
+    </div>
+</div>

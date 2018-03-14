@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using Application.Core.Entities;
 using Application.Core.Interfaces;
+using Application.Core.Services;
 using Application.Infrastructure.Data;
 using Application.Infrastructure.Identity;
 using Application.Infrastructure.Logging;
@@ -72,7 +73,7 @@ namespace Application.Web
             services.AddScoped(typeof(IAsyncRepository<>), typeof(EfRepository<>));
 
             services.AddScoped(typeof(IAppLogger<>), typeof(LoggerAdapter<>));
-
+            services.AddTransient<IBlogService, BlogService>();
             services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddMvc();

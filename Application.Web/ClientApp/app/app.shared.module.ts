@@ -8,6 +8,8 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { Time } from './components/services/time.service';
+import { PostService } from './components/services/post.service';
+import { BlogService } from './components/services/blog.service';
 import { ManageService } from './components/services/manage.service';
 import { AccountService } from './components/services/account.service';
 import { UserService } from './components/services/user.service';
@@ -19,6 +21,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NavBarComponent } from './components/navbar/navbar.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { BlogComponent } from './components/business-logic/blog/blog.component';
+import { BlogsComponent } from './components/business-logic/blog/blogs.component';
 
 import { ExternalLoginComponent } from './components/authentication/account/external-login/external-login.component';
 import { ForgotPasswordComponent } from './components/authentication/account/forgot-password/forgot-password.component';
@@ -48,6 +51,7 @@ const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
     { path: 'blog', component: BlogComponent },
+    { path: 'blogs', component: BlogsComponent},
 
     { path: 'manage-account',  component: ManageAccountComponent },
     { path: 'external-login', component: ExternalLoginComponent },
@@ -80,6 +84,7 @@ const routes: Routes = [
         NavBarComponent,
         NavMenuComponent,
         BlogComponent,
+        BlogsComponent,
 
         ExternalLoginComponent,
         ForgotPasswordComponent,
@@ -117,6 +122,8 @@ const routes: Routes = [
         Time,
         UserService,
         RoleService,
+        BlogService,
+        PostService,
         ManageService,
         MessageService,
         AccountService

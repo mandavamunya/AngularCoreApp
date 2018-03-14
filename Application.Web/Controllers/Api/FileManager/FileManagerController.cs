@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Application.Web.Controllers.Api
+namespace Application.Web.Controllers
 {
     [Produces("application/json")]
     [Route("api/FileManager")]

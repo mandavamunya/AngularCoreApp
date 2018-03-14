@@ -1,5 +1,8 @@
-﻿using Application.Core.Enums;
+﻿using Application.Core.Entities;
+using Application.Core.Enums;
 using Microsoft.AspNetCore.Identity;
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Application.Infrastructure.Identity
@@ -19,7 +22,8 @@ namespace Application.Infrastructure.Identity
 
         public static async Task SeedAsync(
             RoleManager<IdentityRole> roleManager,
-            UserManager<ApplicationUser> userManager)
+            UserManager<ApplicationUser> userManager,
+            AppIdentityDbContext appIdentityDbContext)
         {
 
             // Create Roles
@@ -63,6 +67,22 @@ namespace Application.Infrastructure.Identity
                 await userManager.CreateAsync(user, "P@ssw0rd!");
                 await userManager.AddToRoleAsync(user, "Journalist");
             }
+
+            // Seed Blog
+            var blogs = new List<Blog>()
+            {
+                new Blog { Name = "Insights", IsPublished = true, CreateDate = DateTime.Now, PublishDate = DateTime.Now },
+                new Blog { Name = "Articles", IsPublished = true, CreateDate = DateTime.Now.AddDays(7), PublishDate = DateTime.Now.AddDays(7)},
+                new Blog { Name = "News", IsPublished = true, CreateDate = DateTime.Now.AddDays(101), PublishDate = DateTime.Now.AddDays(101) },
+                new Blog { Name = "Best Artciles", IsPublished = true, CreateDate = DateTime.Now.AddDays(30), PublishDate = DateTime.Now.AddDays(30) },
+                new Blog { Name = "Featured Articles", IsPublished = true, CreateDate = DateTime.Now.AddDays(5), PublishDate = DateTime.Now.AddDays(5) }
+            };
+
+            foreach (var blog in blogs)
+            {
+                await appIdentityDbContext.Blogs.AddAsync(blog);
+            }
+            await appIdentityDbContext.SaveChangesAsync();
         }
 
 

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace Application.Web.Controllers.Api.Authentication
+namespace Application.Web.Controllers
 {
     [Produces("application/json")]
     [Route("api/Manage")]

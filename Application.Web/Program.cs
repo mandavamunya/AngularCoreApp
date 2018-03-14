@@ -21,12 +21,12 @@ namespace Application.Web
                 var loggerFactory = services.GetRequiredService<ILoggerFactory>();
                 try
                 {
-                    //var applicationDbContext = services.GetRequiredService<ApplicationDbContext>();
+                    var appIdentityDbContext = services.GetRequiredService<AppIdentityDbContext>();
                     //ApplicationDbContextSeed.SeedAsync(applicationDbContext, loggerFactory).Wait();
 
                     var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
                     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
-                    AppIdentityDbContextSeed.SeedAsync(roleManager, userManager).Wait();
+                    AppIdentityDbContextSeed.SeedAsync(roleManager, userManager, appIdentityDbContext).Wait();
                 }
                 catch (Exception ex)
                 {

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Application.Core.Entities;
 using Application.Infrastructure.Identity;
 
-namespace Application.Web.Controllers.Api.Publication
+namespace Application.Web.Controllers
 {
     [Produces("application/json")]
     [Route("api/JournoRankings")]

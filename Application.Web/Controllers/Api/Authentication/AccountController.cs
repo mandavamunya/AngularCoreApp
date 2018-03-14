@@ -13,7 +13,7 @@ using Application.Web.Controllers;
 using Application.Infrastructure.Services;
 using Application.Infrastructure.Identity;
 
-namespace Application.Controllers.Api
+namespace Application.Controllers
 {
     [Authorize]
     [Produces("application/json")]

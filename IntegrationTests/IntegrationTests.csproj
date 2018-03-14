@@ -14,8 +14,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Repositories\BlogRepositoryTests\" />
     <Folder Include="Repositories\PublicationRepositoryTests\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Application.Infrastructure\Application.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

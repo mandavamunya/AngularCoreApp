@@ -21,7 +21,7 @@ namespace Application.Core.Services
             _blogRepository = blogRepository;
         }
 
-        public async Task CreateBlogAsync(Blog blog)
+        public async Task AddBlogAsync(Blog blog)
         {
             await _blogRepository.AddAsync(blog);
         }
@@ -29,6 +29,12 @@ namespace Application.Core.Services
         public async Task DeleteBlogAsync(Blog blog)
         {
             await _blogRepository.DeleteAsync(blog);
+        }
+
+
+        public async Task<IEnumerable<Blog>> GetAllBlogs()
+        {
+            return await _blogRepository.ListAllAsync();
         }
 
         public async Task<IEnumerable<Blog>> GetAllBlogItems(int blogId)
