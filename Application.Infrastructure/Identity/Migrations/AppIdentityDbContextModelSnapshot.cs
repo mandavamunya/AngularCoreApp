@@ -41,6 +41,20 @@ namespace Application.Infrastructure.Identity.Migrations
                     b.ToTable("Blogs");
                 });
 
+            modelBuilder.Entity("Application.Core.Entities.BlogCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("Type");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BlogCategories");
+                });
+
             modelBuilder.Entity("Application.Core.Entities.JournoRanking", b =>
                 {
                     b.Property<int>("Id")

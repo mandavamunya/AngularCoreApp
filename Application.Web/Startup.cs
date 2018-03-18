@@ -73,8 +73,10 @@ namespace Application.Web
             services.AddScoped(typeof(IAsyncRepository<>), typeof(EfRepository<>));
 
             services.AddScoped(typeof(IAppLogger<>), typeof(LoggerAdapter<>));
+            services.AddTransient<IPostService, PostService>();
             services.AddTransient<IBlogService, BlogService>();
             services.AddTransient<IBlogRepository, BlogRepository>();
+            services.AddTransient<IPostRepository, PostRepository>();
             services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddMvc()

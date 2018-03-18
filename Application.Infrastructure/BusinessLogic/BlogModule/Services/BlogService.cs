@@ -11,14 +11,17 @@ namespace Application.Core.Services
     {
         private readonly IAppLogger<BlogService> _logger;
         private readonly IAsyncRepository<Blog> _blogRepository;
+        private readonly IAsyncRepository<BlogCategory> _categoryRepository;
 
         public BlogService(
             IAppLogger<BlogService> logger,
-            IAsyncRepository<Blog> blogRepository
+            IAsyncRepository<Blog> blogRepository,
+            IAsyncRepository<BlogCategory> categoryRepository
             )
         {
             _logger = logger;
             _blogRepository = blogRepository;
+            _categoryRepository = categoryRepository;
         }
 
         public async Task AddBlogAsync(Blog blog)
@@ -30,7 +33,6 @@ namespace Application.Core.Services
         {
             await _blogRepository.DeleteAsync(blog);
         }
-
 
         public async Task<IEnumerable<Blog>> GetAllBlogs()
         {
@@ -55,6 +57,11 @@ namespace Application.Core.Services
             Guard.Against.Null(blog, nameof(blog));
             Guard.Against.NullBlog(blog.Id, blog);
             await _blogRepository.UpdateAsync(blog);
+        }
+
+        public async Task<IEnumerable<BlogCategory>> GetBlogCategories()
+        {
+            return await _categoryRepository.ListAllAsync();
         }
     }
 }

@@ -147,6 +147,21 @@ namespace Application.Infrastructure.Identity
                 await appIdentityDbContext.Posts.AddAsync(post);
             }
 
+            // Seed Blog Category: NotSpecified, Insight, Article, News, FeaturedArticle, FeaturedNews
+            var categories = new List<BlogCategory>()
+            {
+                new BlogCategory { Name = "Insights", Type = PostType.Insight },
+                new BlogCategory { Name = "Articles", Type = PostType.Article },
+                new BlogCategory { Name = "News", Type = PostType.News },
+                new BlogCategory { Name = "FeaturedArticle", Type = PostType.FeaturedArticle },
+                new BlogCategory { Name = "FeaturedNews", Type = PostType.FeaturedNews }
+            };
+
+            foreach (var category in categories)
+            {
+                await appIdentityDbContext.BlogCategories.AddAsync(category);
+            }
+
             await appIdentityDbContext.SaveChangesAsync();
 
         }

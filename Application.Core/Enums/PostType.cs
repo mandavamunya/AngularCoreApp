@@ -2,6 +2,6 @@
 {
     public enum PostType
     {
-        Multiple, Article, News, Insight, FeaturedArticle, FeaturedNews
+        NotSpecified, Article, News, Insight, FeaturedArticle, FeaturedNews
     }
 }

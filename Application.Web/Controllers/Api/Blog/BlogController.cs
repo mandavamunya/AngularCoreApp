@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Application.Core.Entities;
 using Application.Core.Interfaces;
 using Application.Infrastructure.Data;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Application.Web.Controllers
@@ -14,11 +11,16 @@ namespace Application.Web.Controllers
     [Route("api/Blog")]
     public class BlogController : Controller
     {
+        private readonly IPostService _postService;
         private readonly IBlogService _blogService;
         private readonly IBlogRepository _blogRepository;
 
-        public BlogController(IBlogService blogService, IBlogRepository blogRepository)
+        public BlogController(
+            IPostService postService, 
+            IBlogService blogService, 
+            IBlogRepository blogRepository)
         {
+            _postService = postService;
             _blogService = blogService;
             _blogRepository = blogRepository;
         }
@@ -29,7 +31,13 @@ namespace Application.Web.Controllers
             return await _blogRepository.GetBlogsAsync();
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("BlogCategories")]
+        public async Task<IEnumerable<BlogCategory>> GetCategories()
+        {
+            return await _blogService.GetBlogCategories();
+        }
+
+        [HttpGet("BlogById/{id}")]
         public async Task<IActionResult> GetBlogById([FromRoute] int id)
         {
             var blog = await _blogService.GetAllBlogItems(id);
@@ -39,5 +47,6 @@ namespace Application.Web.Controllers
             }
             return Ok(blog);
         }
+
     }
 }

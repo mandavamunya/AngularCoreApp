@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import { ActivatedRouteSnapshot, ActivatedRoute, Router } from '@angular/router';
 
 import { BlogService } from '../../services/blog.service';
+import { MessageService } from '../../services/message.service';
 
 import { Blog } from '../../interfaces/blog.interface';
 
@@ -25,8 +26,9 @@ export class BlogsComponent implements OnInit {
 
   constructor(
       private http: Http, 
-      private blogService: BlogService,
       private router: Router,
+      private blogService: BlogService,
+      private alert: MessageService,
       @Inject("BASE_URL") private baseUrl: string
   ) {}
 
@@ -35,15 +37,19 @@ export class BlogsComponent implements OnInit {
     this.getBlogs();
   }
 
-  getBlogs(): void 
+  getBlogs(): void
   {
-    this.http.get(this.baseUrl + "api/Blog").subscribe(
-      result => 
-      {
-        this.allData = result.json() as Blog[];
-        this.blogs = this.Blogs().splice(0, this.records);
-      },
-      error => console.error(error));
+      this.blogService.getBlogs().subscribe(
+          (data) => 
+          {
+            this.allData = data as Blog[];
+            this.blogs = this.Blogs().splice(0, this.records);
+          },
+          (error) => 
+          {
+              this.alert.setMessage(error, "warning")                
+          }
+      );        
   }
 
   Blogs(): Blog[]

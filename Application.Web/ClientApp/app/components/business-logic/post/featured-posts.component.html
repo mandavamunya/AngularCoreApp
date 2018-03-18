@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-md-6" *ngIf="featuredArticle && featuredArticle.content != null">
+        <div class="card">
+            <div class="header">
+                <h4 class="title">Featured Article</h4>
+                <p class="category">
+                    {{featuredArticle.content}}
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6" *ngIf="featuredNews && featuredNews.content != null ">
+        <div class="card ">
+            <div class="header ">
+                <h4 class="title ">Featured News</h4>
+                <p class="category ">
+                    {{featuredNews.content}}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

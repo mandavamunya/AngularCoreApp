@@ -16,7 +16,7 @@ export class BlogService {
          @Inject('BASE_URL') private baseUrl: string) 
     {}
 
-    getBlog()
+    getBlogs()
     {
         return this.http.get(this.baseUrl + 'api/Blog/')
         .map((response: Response) => response.json())
@@ -25,9 +25,18 @@ export class BlogService {
         });
     }
 
+    getBlogCategory()
+    {
+        return this.http.get(this.baseUrl + 'api/Blog/BlogCategories')
+        .map((response: Response) => response.json())
+        .catch((error) => {
+            return Observable.throw(error);
+        });
+    }
+
     deleteBlog(id: number) 
     {     
-        return this.http.delete(this.baseUrl + "api/Blog/" + id)
+        return this.http.delete(this.baseUrl + "api/Blog/BlogById" + id)
         .map((response: Response) => response.json())
         .catch((error) => {
             return Observable.throw(error);
@@ -43,7 +52,7 @@ export class BlogService {
             });
     }  
     
-    UpdateBlog(blog: Blog) 
+    updateBlog(blog: Blog) 
     {
         return this.http.put(this.baseUrl + 'api/Blog/UpdateBlog',  blog)
         .map((response: Response) => response.json())

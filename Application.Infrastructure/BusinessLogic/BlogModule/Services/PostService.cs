@@ -1,6 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Application.Core.Entities;
+using Application.Core.Enums;
 using Application.Core.Interfaces;
+using Application.Core.Specifications;
 using Ardalis.GuardClauses;
 
 namespace Application.Core.Services
@@ -40,6 +43,12 @@ namespace Application.Core.Services
         {
             Guard.Against.Null(post, nameof(post));
             await _postRepository.UpdateAsync(post);
+        }
+
+        public async Task<IEnumerable<Post>> GetPostItemByType(PostType postType)
+        {
+            var spec = new PostItemByTypeSpecification(postType);
+            return await _postRepository.ListAsync(spec);
         }
     }
 }

@@ -12,16 +12,18 @@ namespace UnitTests.Application.Core.Services.BlogServiceTests
     {
         private int _invalidId = -1;
         private Mock<IAsyncRepository<Blog>> _mockBlogRepo;
+        private Mock<IAsyncRepository<BlogCategory>> _mockCategoryRepo;
 
         public SetBlog()
         {
             _mockBlogRepo = new Mock<IAsyncRepository<Blog>>();
+            _mockCategoryRepo = new Mock<IAsyncRepository<BlogCategory>>();
         }
 
         [Fact]
         public async void ThrowsGivenInvalidBlogId()
         {
-            var blogService = new BlogService(null, _mockBlogRepo.Object);
+            var blogService = new BlogService(null, _mockBlogRepo.Object, _mockCategoryRepo.Object);
 
             await Assert.ThrowsAsync<BlogNotFoundException>(
                 async () => await blogService.GetBlogById(_invalidId)
@@ -31,7 +33,7 @@ namespace UnitTests.Application.Core.Services.BlogServiceTests
         [Fact]
         public async void ThrowsGivenNullBlogServiceArguments()
         {
-            var blogService = new BlogService(null, _mockBlogRepo.Object);
+            var blogService = new BlogService(null, _mockBlogRepo.Object, _mockCategoryRepo.Object);
 
             await Assert.ThrowsAsync<ArgumentNullException>(
                 async () => await blogService.SetBogAsync(null)

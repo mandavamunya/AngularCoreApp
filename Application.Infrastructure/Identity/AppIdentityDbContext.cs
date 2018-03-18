@@ -15,10 +15,12 @@ namespace Application.Infrastructure.Identity
         public DbSet<JournoRanking> JournoRankings { get; set; }
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Post> Posts { get; set; }
+        public DbSet<BlogCategory> BlogCategories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
         }
     }
 }

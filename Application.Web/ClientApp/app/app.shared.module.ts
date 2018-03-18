@@ -22,6 +22,7 @@ import { NavBarComponent } from './components/navbar/navbar.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { BlogComponent } from './components/business-logic/blog/blog.component';
 import { BlogsComponent } from './components/business-logic/blog/blogs.component';
+import { FeaturedPostsComponent } from './components/business-logic/post/featured-posts.component';
 
 import { ExternalLoginComponent } from './components/authentication/account/external-login/external-login.component';
 import { ForgotPasswordComponent } from './components/authentication/account/forgot-password/forgot-password.component';
@@ -85,6 +86,7 @@ const routes: Routes = [
         NavMenuComponent,
         BlogComponent,
         BlogsComponent,
+        FeaturedPostsComponent,
 
         ExternalLoginComponent,
         ForgotPasswordComponent,

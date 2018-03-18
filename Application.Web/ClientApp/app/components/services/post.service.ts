@@ -23,6 +23,22 @@ export class PostService {
         });
     }
 
+    getFeaturedArticle() {
+        return this.http.get(this.baseUrl + 'api/Post/FeaturedArticle')
+            .map((response: Response) => response.json())
+            .catch((error) => {
+                return Observable.throw(error);
+            });
+    }
+
+    getFeaturedNews() {
+        return this.http.get(this.baseUrl + 'api/Post/FeaturedNews')
+            .map((response: Response) => response.json())
+            .catch((error) => {
+                return Observable.throw(error);
+            });
+    }
+
     deletePost(id: number) 
     {     
         return this.http.delete(this.baseUrl + "api/Post/" + id)

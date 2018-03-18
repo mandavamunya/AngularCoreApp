@@ -20,14 +20,14 @@
                 </li>
 
                 <li [routerLinkActive]="['link-active']">
-                    <a [routerLink]="['/blogs']">
-                        <span class='glyphicon glyphicon-book'></span> Blog Manager
+                    <a [routerLink]="['/blog']">
+                        <span class='glyphicon glyphicon-home'></span> Blog
                     </a>
                 </li>
 
-                <li [routerLinkActive]="['link-active']">
-                    <a [routerLink]="['/blog']">
-                        <span class='glyphicon glyphicon-home'></span> Blog
+                <li [routerLinkActive]="['link-active']" *ngIf="isLoggedIn(userService.user)">
+                    <a [routerLink]="['/blogs']">
+                        <span class='glyphicon glyphicon-book'></span> Manage Blog
                     </a>
                 </li>
 

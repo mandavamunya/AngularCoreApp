@@ -18,6 +18,11 @@ export class MessageService {
     this.danger = false; 
   }
 
+  hide()
+  {
+    setTimeout(() => this.reset(), 0);
+  }
+
   timeOut()
   {
     setTimeout(() => this.reset(), 2000);

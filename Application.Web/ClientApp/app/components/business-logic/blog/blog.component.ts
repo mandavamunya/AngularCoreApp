@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import { ActivatedRouteSnapshot, ActivatedRoute, Router } from '@angular/router';
 
 import { Blog } from '../../interfaces/blog.interface';
+import { BlogCategory } from '../../interfaces/blog-category.interface';
 
 import { BlogService } from '../../services/blog.service';
 import { MessageService } from '../../services/message.service';
@@ -13,7 +14,8 @@ import { MessageService } from '../../services/message.service';
     styleUrls: ['./blogs.component.css']
 })
 export class BlogComponent implements OnInit {
-    private blog: Blog = <Blog>{};
+    private blogs: Blog[] = [];
+    private blogCategories: BlogCategory[] = [];
 
     constructor(
         private http: Http,
@@ -27,15 +29,37 @@ export class BlogComponent implements OnInit {
 
     ngOnInit(): void
     {
-        this.getBlog();
+        this.getBlogs();
+        this.getBlogCategories();
     }
 
-    getBlog(): void
+    getBlogs(): void
     {
-        this.http.get(this.baseUrl + 'api/Blog/' + this.blogService.selectedBlog.id).subscribe(result => {
-            this.blog = result.json();
-            console.log(this.blog);
-        }, error => console.error(error));
+        this.blogService.getBlogs().subscribe(
+            (data) => 
+            {
+                this.blogs = data as Blog[];
+            },
+            (error) => 
+            {
+                this.alert.setMessage(error, "warning")                
+            }
+        );        
+    }
+
+    getBlogCategories(): void
+    {
+        this.blogService.getBlogCategory().subscribe(
+            (data) => 
+            {
+                this.blogCategories = data as BlogCategory[];
+                console.log(this.blogCategories);
+            },
+            (error) => 
+            {
+                this.alert.setMessage(error, "warning")                
+            }
+        );        
     }
 
     gotoPosts(): void
