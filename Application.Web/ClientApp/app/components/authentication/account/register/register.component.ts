@@ -33,7 +33,7 @@ export class RegisterComponent  {
         });
     }
 
-    prepareSaveRegister(): Register
+    private prepareSaveRegister(): Register
     {
         const formModel = this.registerForm.value;
         
@@ -46,7 +46,7 @@ export class RegisterComponent  {
         return saveRegister;
     }
 
-    onsubmit(): void
+    private onsubmit(): void
     {
         this.model = this.prepareSaveRegister();   
         this.accountService.Register(this.model)
