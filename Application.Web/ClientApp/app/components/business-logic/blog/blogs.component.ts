@@ -37,7 +37,7 @@ export class BlogsComponent implements OnInit {
     this.getBlogs();
   }
 
-  getBlogs(): void
+  private getBlogs(): void
   {
       this.blogService.getBlogs().subscribe(
           (data) => 
@@ -52,26 +52,26 @@ export class BlogsComponent implements OnInit {
       );        
   }
 
-  Blogs(): Blog[]
+  private Blogs(): Blog[]
   {
       return Object.assign([], this.allData);
   }
 
-  Next(): void
+  private Next(): void
   {
     this.index = this.index + this.records;
     this.blogs = this.Blogs().splice(this.index, this.records);  
     this.pagination(); 
   }
 
-  Previous(): void
+  private Previous(): void
   {
     this.index = this.index - this.records;
     this.blogs = this.Blogs().splice(this.index, this.records);   
     this.pagination();
   }
 
-  pagination()
+  private pagination()
   {
     var check = this.index + this.records;
     if (check >= this.allData.length)
@@ -85,12 +85,12 @@ export class BlogsComponent implements OnInit {
         this.previous = false;
   }
 
-  onSelect(blog: Blog): void
+  private onSelect(blog: Blog): void
   {
     this.selectedBlog = blog;
   }
 
-  gotoBlog(): void
+  private gotoBlog(): void
   {
     this.router.navigate(['/blog']);
   }

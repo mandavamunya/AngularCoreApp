@@ -41,7 +41,7 @@ namespace Application.Core.Services
 
         public async Task<IEnumerable<Blog>> GetAllBlogItems(int blogId)
         {
-            var spec = new BlogWithItemsSpecification(blogId);
+            var spec = new BlogByIdSpecification(blogId);
             return await _blogRepository.ListAsync(spec);
         }
 

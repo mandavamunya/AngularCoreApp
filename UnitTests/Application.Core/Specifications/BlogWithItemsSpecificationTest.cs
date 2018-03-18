@@ -13,7 +13,7 @@ namespace UnitTests.Application.Core.Specifications
         [InlineData(6, 0)]
         public void MatchesExpectedNumberOfItems(int blogId, int expectedCount)
         {
-            var spec = new BlogWithItemsSpecification(blogId);
+            var spec = new BlogByIdSpecification(blogId);
 
             var result = GetTestItemCollection()
                 .AsQueryable()

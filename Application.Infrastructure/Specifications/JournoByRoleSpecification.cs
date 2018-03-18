@@ -4,9 +4,9 @@ using Application.Infrastructure.Identity;
 
 namespace Application.Infrastructure.Specifications
 {
-    public class JournoWithItemsSpecification : BaseSpecification<ApplicationUser>
+    public class JournoByRoleSpecification : BaseSpecification<ApplicationUser>
     {
-        public JournoWithItemsSpecification(Role role)
+        public JournoByRoleSpecification(Role role)
             : base(b => b.Role == role)
         {
             AddInclude(b => b.JournoRankings);

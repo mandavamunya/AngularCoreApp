@@ -1,6 +1,5 @@
 ﻿using Application.Core.Entities;
 using Application.Core.Enums;
-using Application.Core.Specifications;
 
 namespace Application.Core.Specifications
 {

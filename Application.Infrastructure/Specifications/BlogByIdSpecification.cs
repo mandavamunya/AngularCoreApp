@@ -2,9 +2,9 @@
 
 namespace Application.Core.Specifications
 {
-    public class BlogWithItemsSpecification: BaseSpecification<Blog>
+    public class BlogByIdSpecification: BaseSpecification<Blog>
     {
-        public BlogWithItemsSpecification(int blogId)
+        public BlogByIdSpecification(int blogId)
             : base(b => b.Id == blogId)
         {
             AddInclude(b => b.Posts);

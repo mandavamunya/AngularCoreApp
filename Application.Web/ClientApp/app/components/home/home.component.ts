@@ -38,9 +38,9 @@ export class HomeComponent implements OnInit {
         this.userService.getProfile().subscribe(
             (data) => 
             { 
-                //this.model = data;
-                //this.userService.accessLevel = this.model.role;
-               // this.roleService.setRole();                  
+                this.model = data;
+                this.userService.accessLevel = this.model.role;
+                this.roleService.setRole();                  
             },
             (error) => error
         );  

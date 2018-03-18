@@ -35,7 +35,7 @@ export class PostsComponent implements OnInit {
     this.getPosts();
   }
 
-  getPosts(): void 
+  private getPosts(): void 
   {
     this.http.get(this.baseUrl + "api/Post").subscribe(
       result => 
@@ -46,26 +46,26 @@ export class PostsComponent implements OnInit {
       error => console.error(error));
   }
 
-  Posts(): Post[]
+  private Posts(): Post[]
   {
       return Object.assign([], this.allData);
   }
 
-  Next(): void
+  private Next(): void
   {
     this.index = this.index + this.records;
     this.posts = this.Posts().splice(this.index, this.records);  
     this.pagination(); 
   }
 
-  Previous(): void
+  private Previous(): void
   {
     this.index = this.index - this.records;
     this.posts = this.Posts().splice(this.index, this.records);   
     this.pagination();
   }
 
-  pagination()
+  private pagination():void
   {
     var check = this.index + this.records;
     if (check >= this.allData.length)
@@ -79,12 +79,12 @@ export class PostsComponent implements OnInit {
         this.previous = false;
   }
 
-  onSelect(post: Post): void
+  private onSelect(post: Post): void
   {
     this.selectedPost = post;
   }
 
-  gotoPost(): void
+  private gotoPost(): void
   {
     this.router.navigate(['/post']);
   }
