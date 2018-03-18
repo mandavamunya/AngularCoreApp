@@ -12,7 +12,7 @@ using System;
 namespace Application.Infrastructure.Identity.Migrations
 {
     [DbContext(typeof(AppIdentityDbContext))]
-    [Migration("20180314190534_InitialIdentityModel")]
+    [Migration("20180315194910_InitialIdentityModel")]
     partial class InitialIdentityModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,6 +32,8 @@ namespace Application.Infrastructure.Identity.Migrations
                     b.Property<bool>("IsPublished");
 
                     b.Property<string>("Name");
+
+                    b.Property<int?>("PostType");
 
                     b.Property<DateTime>("PublishDate");
 
@@ -71,8 +73,6 @@ namespace Application.Infrastructure.Identity.Migrations
 
                     b.Property<string>("ApplicationUserId");
 
-                    b.Property<int>("Articles");
-
                     b.Property<int>("BlogId");
 
                     b.Property<int>("Comments");
@@ -82,6 +82,8 @@ namespace Application.Infrastructure.Identity.Migrations
                     b.Property<DateTime>("CreateDate");
 
                     b.Property<string>("Description");
+
+                    b.Property<int>("Publications");
 
                     b.Property<DateTime>("PublishDate");
 

@@ -33,7 +33,8 @@ export class BlogComponent implements OnInit {
     getBlog(): void
     {
         this.http.get(this.baseUrl + 'api/Blog/' + this.blogService.selectedBlog.id).subscribe(result => {
-            this.blog = result.json() as Blog;
+            this.blog = result.json();
+            console.log(this.blog);
         }, error => console.error(error));
     }
 

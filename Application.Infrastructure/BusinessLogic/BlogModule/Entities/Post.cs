@@ -14,14 +14,14 @@ namespace Application.Core.Entities
             string description, 
             string content, 
             int views, 
-            int articles,
+            int publications,
             PostType type)
         {
             Title = title;
             Description = description;
             Content = content;
             Views = views;
-            Articles = articles;
+            Publications = publications;
             Type = type;
         }
 
@@ -30,13 +30,13 @@ namespace Application.Core.Entities
         public string Content { get; set; }
         public int Views { get; set; }
         public int Comments { get; set; }
-        public int Articles { get; set; }
+        public int Publications { get; set; }
         public PostType Type { get; set; }
-
-        public int BlogId { get; set; }
-        public Blog Blog { get; set; }
 
         public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
+
+        public int BlogId { get; set; }
+        public virtual Blog Blog { get; set; }
     }
 }

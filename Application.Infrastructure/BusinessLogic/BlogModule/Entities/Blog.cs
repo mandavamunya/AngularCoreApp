@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Application.Core.Enums;
+using System.Collections.Generic;
 
 namespace Application.Core.Entities
 {
@@ -15,6 +16,7 @@ namespace Application.Core.Entities
         }
 
         public string Name { get; set; }
+        public PostType? PostType { get; set; }
         public bool IsPublished { get; set; }
        
         public ICollection<Post> Posts { get; set; }

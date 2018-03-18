@@ -10,7 +10,7 @@ namespace Application.Infrastructure.Data
 {
     public class EfRepository<T> : IRepository<T>, IAsyncRepository<T> where T : BaseEntity
     {
-        private readonly AppIdentityDbContext _dbContext;
+        protected readonly AppIdentityDbContext _dbContext;
 
         public EfRepository(AppIdentityDbContext dbContext)
         {

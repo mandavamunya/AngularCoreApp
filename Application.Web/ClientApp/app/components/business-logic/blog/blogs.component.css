@@ -1,0 +1,19 @@
+.selected {
+    background-color: #CFD8DC;
+    color: black;
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+    /* For IE8 and earlier */
+}
+
+.modal-dialog {
+    width: 80%;
+}
+
+.International {
+    background-color: rgb(96, 172, 111);
+}
+
+.Local {
+    background-color: hsl(0, 84%, 75%);
+}

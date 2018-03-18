@@ -74,9 +74,14 @@ namespace Application.Web
 
             services.AddScoped(typeof(IAppLogger<>), typeof(LoggerAdapter<>));
             services.AddTransient<IBlogService, BlogService>();
+            services.AddTransient<IBlogRepository, BlogRepository>();
             services.AddTransient<IEmailSender, EmailSender>();
 
-            services.AddMvc();
+            services.AddMvc()
+                .AddJsonOptions(
+                options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore)
+                .AddXmlSerializerFormatters();
+
             services.AddAutoMapper();
         }
 

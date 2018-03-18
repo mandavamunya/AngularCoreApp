@@ -32,6 +32,8 @@ namespace Application.Infrastructure.Identity.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<int?>("PostType");
+
                     b.Property<DateTime>("PublishDate");
 
                     b.HasKey("Id");
@@ -70,8 +72,6 @@ namespace Application.Infrastructure.Identity.Migrations
 
                     b.Property<string>("ApplicationUserId");
 
-                    b.Property<int>("Articles");
-
                     b.Property<int>("BlogId");
 
                     b.Property<int>("Comments");
@@ -81,6 +81,8 @@ namespace Application.Infrastructure.Identity.Migrations
                     b.Property<DateTime>("CreateDate");
 
                     b.Property<string>("Description");
+
+                    b.Property<int>("Publications");
 
                     b.Property<DateTime>("PublishDate");
 

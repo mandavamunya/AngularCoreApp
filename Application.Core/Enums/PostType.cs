@@ -2,6 +2,6 @@
 {
     public enum PostType
     {
-        Article, Publication, Tweet
+        Multiple, Article, News, Insight, FeaturedArticle, FeaturedNews
     }
 }

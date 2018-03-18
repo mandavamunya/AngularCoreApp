@@ -61,6 +61,7 @@ namespace Application.Infrastructure.Identity.Migrations
                     CreateDate = table.Column<DateTime>(nullable: false),
                     IsPublished = table.Column<bool>(nullable: false),
                     Name = table.Column<string>(nullable: true),
+                    PostType = table.Column<int>(nullable: true),
                     PublishDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
@@ -205,12 +206,12 @@ namespace Application.Infrastructure.Identity.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     ApplicationUserId = table.Column<string>(nullable: true),
-                    Articles = table.Column<int>(nullable: false),
                     BlogId = table.Column<int>(nullable: false),
                     Comments = table.Column<int>(nullable: false),
                     Content = table.Column<string>(nullable: true),
                     CreateDate = table.Column<DateTime>(nullable: false),
                     Description = table.Column<string>(nullable: true),
+                    Publications = table.Column<int>(nullable: false),
                     PublishDate = table.Column<DateTime>(nullable: false),
                     Title = table.Column<string>(nullable: true),
                     Type = table.Column<int>(nullable: false),

@@ -22,10 +22,10 @@
         <button class="btn btn-primary" (click)="Previous()" [disabled]="previous">Previous</button>
         <button class="btn btn-primary" (click)="Next()" [disabled]="next">Next</button>
     </div>
-    <div *ngIf="selectedUser">
+    <div *ngIf="selectedBlog">
         <h2>
             Selected: {{selectedBlog.name | uppercase}}
         </h2>
-        <button (click)="gotoUser()" class="btn btn-primary">Change Details</button>
+        <button (click)="gotoBlog()" class="btn btn-primary">Change Details</button>
     </div>
 </div>
