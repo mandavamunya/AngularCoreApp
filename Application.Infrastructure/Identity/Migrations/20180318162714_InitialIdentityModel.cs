@@ -288,6 +288,19 @@ namespace Application.Infrastructure.Identity.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_BlogCategories_Type",
+                table: "BlogCategories",
+                column: "Type",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Blogs_PostType",
+                table: "Blogs",
+                column: "PostType",
+                unique: true,
+                filter: "[PostType] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_JournoRankings_ApplicationUserId",
                 table: "JournoRankings",
                 column: "ApplicationUserId");

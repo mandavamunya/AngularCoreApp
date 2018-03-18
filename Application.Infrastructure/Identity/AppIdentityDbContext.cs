@@ -21,6 +21,14 @@ namespace Application.Infrastructure.Identity
         {
             base.OnModelCreating(builder);
 
+            builder.Entity<Blog>()
+                .HasIndex(o => new { o.PostType })
+                .IsUnique();
+
+            builder.Entity<BlogCategory>()
+                .HasIndex(o => new { o.Type })
+                .IsUnique();
+
         }
     }
 }

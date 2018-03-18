@@ -12,7 +12,7 @@ using System;
 namespace Application.Infrastructure.Identity.Migrations
 {
     [DbContext(typeof(AppIdentityDbContext))]
-    [Migration("20180318140050_InitialIdentityModel")]
+    [Migration("20180318162714_InitialIdentityModel")]
     partial class InitialIdentityModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,6 +39,10 @@ namespace Application.Infrastructure.Identity.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("PostType")
+                        .IsUnique()
+                        .HasFilter("[PostType] IS NOT NULL");
+
                     b.ToTable("Blogs");
                 });
 
@@ -52,6 +56,9 @@ namespace Application.Infrastructure.Identity.Migrations
                     b.Property<int>("Type");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Type")
+                        .IsUnique();
 
                     b.ToTable("BlogCategories");
                 });

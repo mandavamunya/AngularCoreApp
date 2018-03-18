@@ -25,6 +25,15 @@ export class BlogService {
         });
     }
 
+    getBlogById(id: number)
+    {
+        return this.http.get(this.baseUrl + 'api/Blog/BlogById' + id)
+        .map((response: Response) => response.json())
+        .catch((error) => {
+            return Observable.throw(error);
+        });
+    }
+
     getBlogCategory()
     {
         return this.http.get(this.baseUrl + 'api/Blog/BlogCategories')

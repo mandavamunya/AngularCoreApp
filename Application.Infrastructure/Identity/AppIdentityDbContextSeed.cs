@@ -2,6 +2,7 @@
 using Application.Core.Enums;
 using Microsoft.AspNetCore.Identity;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -71,11 +72,11 @@ namespace Application.Infrastructure.Identity
             // Seed Blog
             var blogs = new List<Blog>()
             {
-                new Blog { Name = "Insights", IsPublished = true, CreateDate = DateTime.Now, PublishDate = DateTime.Now },
-                new Blog { Name = "Articles", IsPublished = true, CreateDate = DateTime.Now.AddDays(7), PublishDate = DateTime.Now.AddDays(7)},
-                new Blog { Name = "News", IsPublished = true, CreateDate = DateTime.Now.AddDays(101), PublishDate = DateTime.Now.AddDays(101) },
-                new Blog { Name = "Featured Artciles", IsPublished = true, CreateDate = DateTime.Now.AddDays(30), PublishDate = DateTime.Now.AddDays(30) },
-                new Blog { Name = "Featured News", IsPublished = true, CreateDate = DateTime.Now.AddDays(5), PublishDate = DateTime.Now.AddDays(5) }
+                new Blog { Name = "Insights", PostType = PostType.Insight, IsPublished = true, CreateDate = DateTime.Now, PublishDate = DateTime.Now },
+                new Blog { Name = "Articles", PostType = PostType.Article, IsPublished = true, CreateDate = DateTime.Now.AddDays(7), PublishDate = DateTime.Now.AddDays(7)},
+                new Blog { Name = "News", PostType = PostType.News, IsPublished = true, CreateDate = DateTime.Now.AddDays(101), PublishDate = DateTime.Now.AddDays(101) },
+                new Blog { Name = "Featured Artciles", PostType = PostType.FeaturedArticle, IsPublished = true, CreateDate = DateTime.Now.AddDays(30), PublishDate = DateTime.Now.AddDays(30) },
+                new Blog { Name = "Featured News", PostType = PostType.FeaturedNews, IsPublished = true, CreateDate = DateTime.Now.AddDays(5), PublishDate = DateTime.Now.AddDays(5) }
             };
 
             foreach (var blog in blogs)
@@ -142,6 +143,8 @@ namespace Application.Infrastructure.Identity
                 }
             };
 
+            var postEntities = appIdentityDbContext.Posts.ToList();
+
             foreach (var post in posts)
             {
                 await appIdentityDbContext.Posts.AddAsync(post);
@@ -156,6 +159,7 @@ namespace Application.Infrastructure.Identity
                 new BlogCategory { Name = "FeaturedArticle", Type = PostType.FeaturedArticle },
                 new BlogCategory { Name = "FeaturedNews", Type = PostType.FeaturedNews }
             };
+
 
             foreach (var category in categories)
             {

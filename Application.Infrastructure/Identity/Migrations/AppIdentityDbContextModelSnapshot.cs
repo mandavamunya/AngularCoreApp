@@ -38,6 +38,10 @@ namespace Application.Infrastructure.Identity.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("PostType")
+                        .IsUnique()
+                        .HasFilter("[PostType] IS NOT NULL");
+
                     b.ToTable("Blogs");
                 });
 
@@ -51,6 +55,9 @@ namespace Application.Infrastructure.Identity.Migrations
                     b.Property<int>("Type");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Type")
+                        .IsUnique();
 
                     b.ToTable("BlogCategories");
                 });

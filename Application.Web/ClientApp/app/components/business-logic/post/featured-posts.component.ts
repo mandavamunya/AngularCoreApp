@@ -40,7 +40,6 @@ export class FeaturedPostsComponent implements OnInit {
             (data) => 
             {
                 this.featuredNews = data as Post;
-                this.hasFeaturedNews();
             },
             (error) => 
             {
@@ -55,7 +54,6 @@ export class FeaturedPostsComponent implements OnInit {
             (data) => 
             {
                 this.featuredArticle = data as Post;
-                this.hasFeaturedArticle();
             },
             (error) => 
             {
@@ -66,11 +64,6 @@ export class FeaturedPostsComponent implements OnInit {
 
     private hasFeaturedNews(): boolean
     {
-        if (this.featuredNews == <Post>{})
-        {
-            console.log("Featured News");
-        }
-       
         if (this.featuredNews.title == "" && this.featuredNews.content == "")
         {
             return true;
@@ -83,11 +76,6 @@ export class FeaturedPostsComponent implements OnInit {
 
     private hasFeaturedArticle(): boolean
     {
-        if (this.featuredArticle == <Post>{})
-        {
-            console.log("Featured Article");
-        }
-
         if (this.featuredArticle.title == "" && this.featuredArticle.content == "")
         {
             return true;
