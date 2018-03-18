@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import { ActivatedRouteSnapshot, ActivatedRoute, Router } from '@angular/router';
 
 import { UserService } from '../../services/user.service';
+import { MessageService } from '../../services/message.service';
 
 import { UserViewModel } from '../../interfaces/user.interface';
 
@@ -25,8 +26,9 @@ export class UsersComponent implements OnInit {
 
   constructor(
       private http: Http, 
-      private userService: UserService,
       private router: Router,
+      private alert: MessageService,
+      private userService: UserService,
       @Inject("BASE_URL") private baseUrl: string
   ) {}
 
@@ -35,37 +37,41 @@ export class UsersComponent implements OnInit {
     this.getUsers();
   }
 
-  getUsers(): void 
+  private getUsers(): void
   {
-    this.http.get(this.baseUrl + "api/User").subscribe(
-      result => 
-      {
-        this.allData = result.json() as UserViewModel[];
-        this.users = this.Users().splice(0, this.records);
-      },
-      error => console.error(error));
-  }
+      this.userService.getUsers().subscribe(
+          (data) => 
+          {
+            this.allData = data as UserViewModel[];
+            this.users = this.Users().splice(0, this.records);              
+          },
+          (error) => 
+          {
+              this.alert.setMessage(error, "warning")                
+          }
+      );        
+  }  
 
-  Users(): UserViewModel[]
+  private Users(): UserViewModel[]
   {
       return Object.assign([], this.allData);
   }
 
-  Next(): void
+  private Next(): void
   {
     this.index = this.index + this.records;
     this.users = this.Users().splice(this.index, this.records);  
     this.pagination(); 
   }
 
-  Previous(): void
+  private Previous(): void
   {
     this.index = this.index - this.records;
     this.users = this.Users().splice(this.index, this.records);   
     this.pagination();
   }
 
-  pagination()
+  private pagination()
   {
     var check = this.index + this.records;
     if (check >= this.allData.length)
@@ -79,13 +85,13 @@ export class UsersComponent implements OnInit {
         this.previous = false;
   }
 
-  onSelect(user: UserViewModel): void
+  private onSelect(user: UserViewModel): void
   {
     this.selectedUser = user;
     this.userService.selectedUser = this.selectedUser;
   }
 
-  gotoUser(): void
+  private gotoUser(): void
   {
     this.router.navigate(['/user']);
   }

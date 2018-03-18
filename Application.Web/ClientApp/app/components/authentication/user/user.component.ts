@@ -1,8 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
-import { ActivatedRouteSnapshot, ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, Router } from '@angular/router';
 
 import { UserService } from '../../services/user.service';
+import { MessageService } from '../../services/message.service';
 
 import { User, UserViewModel } from '../../interfaces/user.interface';
 
@@ -16,9 +17,9 @@ export class UserComponent implements OnInit {
 
     constructor(
         private http: Http,
-        private router: Router, 
+        private router: Router,
+        private alert: MessageService,         
         private userService: UserService,
-        private route: ActivatedRoute,
         @Inject('BASE_URL') private baseUrl: string
     ) 
     {
@@ -29,15 +30,22 @@ export class UserComponent implements OnInit {
         this.getUser();
     }
 
-    getUser(): void
+    private getUser(): void
     {
-        this.http.get(this.baseUrl + 'api/User/' + this.userService.selectedUser.username).subscribe(result => {
-            this.user = result.json() as UserViewModel;
-            this.userService.selectedUser = this.user;
-        }, error => console.error(error));
+        this.userService.getUser(this.userService.selectedUser.username).subscribe(
+            (data) => 
+            {
+                this.user = data as UserViewModel;
+                this.userService.selectedUser = this.user;              
+            },
+            (error) => 
+            {
+                this.alert.setMessage(error, "warning")                
+            }
+        );      
     }
 
-    gotoUsers(): void
+    private gotoUsers(): void
     {
         this.router.navigate(['/users']);
     }

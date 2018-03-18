@@ -25,7 +25,7 @@ export class MessageService {
 
   timeOut()
   {
-    setTimeout(() => this.reset(), 20000);
+    setTimeout(() => this.reset(), 2000);
   }
 
   setMessage(message: string,  alertType: string)

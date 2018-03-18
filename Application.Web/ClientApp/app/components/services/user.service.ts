@@ -10,7 +10,6 @@ import { Role, UserRole } from '../interfaces/roles.interface';
 @Injectable()
 export class UserService {
     public selectedUser: UserViewModel = <UserViewModel>{};
-    //public selectedJournalist: Journalist;
     public user: User = <User>{};
     
     public accessLevel: string = <string>{};

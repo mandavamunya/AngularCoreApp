@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import { ActivatedRouteSnapshot, ActivatedRoute, Router } from '@angular/router';
 
 import { PostService } from '../../services/post.service';
+import { MessageService } from '../../services/message.service';
 
 import { Post } from '../../interfaces/post.interface';
 
@@ -25,8 +26,9 @@ export class PostsComponent implements OnInit {
 
   constructor(
       private http: Http, 
-      private postService: PostService,
       private router: Router,
+      private postService: PostService,
+      private alert: MessageService,
       @Inject("BASE_URL") private baseUrl: string
   ) {}
 
@@ -35,15 +37,19 @@ export class PostsComponent implements OnInit {
     this.getPosts();
   }
 
-  private getPosts(): void 
+  private getPosts(): void
   {
-    this.http.get(this.baseUrl + "api/Post").subscribe(
-      result => 
-      {
-        this.allData = result.json() as Post[];
-        this.posts = this.Posts().splice(0, this.records);
-      },
-      error => console.error(error));
+      this.postService.getPosts().subscribe(
+          (data) => 
+          {
+            this.allData = data as Post[];
+            this.posts = this.Posts().splice(0, this.records);               
+          },
+          (error) => 
+          {
+              this.alert.setMessage(error, "warning")                
+          }
+      );        
   }
 
   private Posts(): Post[]

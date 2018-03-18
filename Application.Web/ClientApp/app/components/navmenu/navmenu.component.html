@@ -25,7 +25,7 @@
                     </a>
                 </li>
 
-                <li [routerLinkActive]="['link-active']" *ngIf="isLoggedIn(userService.user)">
+                <li [routerLinkActive]="['link-active']" *ngIf="isLoggedIn(userService.user) && (roleService.administrator || roleService.developer)">
                     <a [routerLink]="['/blogs']">
                         <span class='glyphicon glyphicon-book'></span> Manage Blog
                     </a>

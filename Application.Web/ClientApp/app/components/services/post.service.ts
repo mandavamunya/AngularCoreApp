@@ -14,7 +14,7 @@ export class PostService {
          @Inject('BASE_URL') private baseUrl: string) 
     {}
 
-    getPost()
+    getPosts()
     {
         return this.http.get(this.baseUrl + 'api/Post/')
         .map((response: Response) => response.json())
