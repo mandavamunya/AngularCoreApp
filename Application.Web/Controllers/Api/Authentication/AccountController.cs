@@ -239,12 +239,10 @@ namespace Application.Controllers
                     _logger.LogInformation("User created a new account with password.");
                     return Ok("User created a new account with password.");
                 }
-                //AddErrors(result);
                 return BadRequest(result);
             }
 
             // If we got this far, something failed, redisplay form
-            //return View(model);
             return BadRequest(ModelState);
         }
 

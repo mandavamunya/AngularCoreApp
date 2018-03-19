@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <Folder Include="Collections\Graphs\Generic\" />
-    <Folder Include="Collections\Trees\Generic\" />
   </ItemGroup>
 
 </Project>

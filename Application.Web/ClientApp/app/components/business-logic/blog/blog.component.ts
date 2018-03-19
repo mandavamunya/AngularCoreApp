@@ -24,11 +24,10 @@ export class BlogComponent implements OnInit {
 
     constructor(
         private http: Http,
-        private router: Router, 
-        private route: ActivatedRoute,
         private time: Time,
-        private blogService: BlogService,
-        private alert: MessageService,        
+        private router: Router, 
+        private alert: MessageService,  
+        private blogService: BlogService,      
         @Inject('BASE_URL') private baseUrl: string        
     )
     {}
@@ -65,12 +64,11 @@ export class BlogComponent implements OnInit {
         return Object.assign([], this.blogs);
     }
 
-    private selectTab(blog: Blog)
+    private selectTab(blog: Blog): void
     {
         this.activeTab = blog;
         this.tabs = this.categories().filter(item => item !== blog);
         this.blogService.selectedBlog = blog;
-        console.log(blog);
     }
 
     private gotoPosts(): void
@@ -78,7 +76,7 @@ export class BlogComponent implements OnInit {
         this.router.navigate(['/blog']);
     }
 
-    private dateToString(date: Date)
+    private dateToString(date: Date): string
     {
         return this.time.dateMonthYear(date.toString());
     }

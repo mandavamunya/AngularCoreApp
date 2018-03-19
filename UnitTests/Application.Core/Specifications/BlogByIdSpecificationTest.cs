@@ -6,7 +6,7 @@ using Xunit;
 
 namespace UnitTests.Application.Core.Specifications
 {
-    public class BlogWithItemsSpecificationTest
+    public class BlogByIdSpecificationTest
     {
         [Theory]
         [InlineData(1, 1)]
