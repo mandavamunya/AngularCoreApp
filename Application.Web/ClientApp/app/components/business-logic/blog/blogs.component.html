@@ -14,8 +14,8 @@
             <tbody>
                 <tr *ngFor="let blog of blogs" [class.selected]="blog === selectedBlog" (click)="onSelect(blog)">
                     <td>{{blog.name}}</td>
-                    <td>{{blog.createDate}}</td>
-                    <td>{{blog.publishDate}}</td>
+                    <td>{{time.dateMonthYear(blog.createDate)}}</td>
+                    <td>{{time.dateMonthYear(blog.publishDate)}}</td>
                 </tr>
             </tbody>
         </table>
@@ -26,6 +26,7 @@
         <h2>
             Selected: {{selectedBlog.name | uppercase}}
         </h2>
-        <button (click)="gotoBlog()" class="btn btn-primary">Change Details</button>
+        <button (click)="gotoBlog()" class="btn btn-primary">View Posts</button>
+        <button class="btn btn-primary" disabled> Edit Blog</button>
     </div>
 </div>

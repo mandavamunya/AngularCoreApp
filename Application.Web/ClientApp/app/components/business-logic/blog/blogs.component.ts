@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { ActivatedRouteSnapshot, ActivatedRoute, Router } from '@angular/router';
 
+import { Time } from '../../services/time.service';
 import { BlogService } from '../../services/blog.service';
 import { MessageService } from '../../services/message.service';
 
@@ -25,16 +26,18 @@ export class BlogsComponent implements OnInit {
   private previous = true;
 
   constructor(
+      private time: Time,
       private http: Http, 
       private router: Router,
-      private blogService: BlogService,
       private alert: MessageService,
+      private blogService: BlogService,
       @Inject("BASE_URL") private baseUrl: string
   ) {}
 
   ngOnInit(): void 
   {
-    this.getBlogs();
+    this.alert.hide();
+    this.getBlogs(); 
   }
 
   private getBlogs(): void
@@ -44,6 +47,11 @@ export class BlogsComponent implements OnInit {
           {
             this.allData = data as Blog[];
             this.blogs = this.Blogs().splice(0, this.records);
+            var dataLength = this.allData.length;
+            if (this.records == dataLength)
+            {
+              this.next = false;
+            }             
           },
           (error) => 
           {
@@ -74,11 +82,11 @@ export class BlogsComponent implements OnInit {
   private pagination()
   {
     var check = this.index + this.records;
-    if (check >= this.allData.length)
+    var dataLength = this.allData.length;
+    if (check >= dataLength)
         this.next = true;
     else 
         this.next = false;
-
     if (this.index <= 0)
         this.previous = true;
     else 
@@ -88,6 +96,7 @@ export class BlogsComponent implements OnInit {
   private onSelect(blog: Blog): void
   {
     this.selectedBlog = blog;
+    this.blogService.selectedBlog = blog;
   }
 
   private gotoBlog(): void

@@ -5,6 +5,7 @@ import { ActivatedRouteSnapshot, ActivatedRoute, Router } from '@angular/router'
 import { Blog } from '../../interfaces/blog.interface';
 import { BlogCategory } from '../../interfaces/blog-category.interface';
 
+import { Time } from '../../services/time.service';
 import { BlogService } from '../../services/blog.service';
 import { MessageService } from '../../services/message.service';
 
@@ -25,6 +26,7 @@ export class BlogComponent implements OnInit {
         private http: Http,
         private router: Router, 
         private route: ActivatedRoute,
+        private time: Time,
         private blogService: BlogService,
         private alert: MessageService,        
         @Inject('BASE_URL') private baseUrl: string        
@@ -33,8 +35,13 @@ export class BlogComponent implements OnInit {
 
     ngOnInit(): void
     {
-        this.getBlogs();
         this.alert.hide();
+        this.getBlogs();
+        var selectedBlog = this.blogService.selectedBlog;
+        if (selectedBlog.id > 1)
+        {
+            setTimeout(() => this.selectTab(selectedBlog), 2000);     
+        }
     }
 
     private getBlogs(): void
@@ -58,14 +65,21 @@ export class BlogComponent implements OnInit {
         return Object.assign([], this.blogs);
     }
 
-    private selectTab(blogCategory: Blog)
+    private selectTab(blog: Blog)
     {
-        this.activeTab = blogCategory;
-        this.tabs = this.categories().filter(item => item !== blogCategory);
+        this.activeTab = blog;
+        this.tabs = this.categories().filter(item => item !== blog);
+        this.blogService.selectedBlog = blog;
+        console.log(blog);
     }
 
     private gotoPosts(): void
     {
         this.router.navigate(['/blog']);
+    }
+
+    private dateToString(date: Date)
+    {
+        return this.time.dateMonthYear(date.toString());
     }
 }

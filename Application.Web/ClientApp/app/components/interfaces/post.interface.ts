@@ -8,6 +8,6 @@ export interface Post
     views: number;
     articles: number;
     type: number;
-    createdate: Date;
-    publishDate: Date;
+    createdate?: Date;
+    publishDate?: Date;
 }

@@ -19,7 +19,7 @@ export class Time {
       return this.datetime(date).getDate() + " " + this.monthToString(this.datetime(date).getMonth());
     }
 
-    public datemonthyear(date: string): string
+    public dateMonthYear(date: string): string
     {
       return this.datetime(date).getDate() + " " + this.monthToString(this.datetime(date).getMonth()) + " " + this.datetime(date).getFullYear();
     }

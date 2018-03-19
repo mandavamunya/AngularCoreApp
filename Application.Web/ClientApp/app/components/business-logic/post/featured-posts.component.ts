@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Time } from '../../services/time.service';
 import { PostService } from '../../services/post.service';
 import { UserService } from '../../services/user.service';
 import { RoleService } from '../../services/role.service';
@@ -19,16 +20,18 @@ export class FeaturedPostsComponent implements OnInit {
     private featuredArticle: Post = <Post>{}
 
     constructor(
+        private time: Time,
+        private alert: MessageService,
         private postService: PostService,
         private roleService: RoleService,
-        private userService: UserService,
-        private alert: MessageService
+        private userService: UserService
     )
     {
     }
 
     ngOnInit(): void
     {
+        this.alert.hide();
         this.getFeaturedNews();
         this.getFeaturedArticle();
     }
@@ -60,30 +63,6 @@ export class FeaturedPostsComponent implements OnInit {
                 this.alert.setMessage(error, "warning")                
             }
         );
-    }
-
-    private hasFeaturedNews(): boolean
-    {
-        if (this.featuredNews.title == "" && this.featuredNews.content == "")
-        {
-            return true;
-        } 
-        else 
-        {
-            return false;
-        }
-    }
-
-    private hasFeaturedArticle(): boolean
-    {
-        if (this.featuredArticle.title == "" && this.featuredArticle.content == "")
-        {
-            return true;
-        } 
-        else 
-        {
-            return false;
-        }
     }
 
 }

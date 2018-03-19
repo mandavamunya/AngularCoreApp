@@ -47,6 +47,7 @@ namespace Application.Infrastructure.Identity
                     LastName = "Doe",
                     UserName = "johndoe@email.com",
                     Email = "johndoe@email.com",
+                    PhoneNumber = "0717367946",
                     Role = Role.Developer
                 };
 
@@ -63,6 +64,7 @@ namespace Application.Infrastructure.Identity
                     LastName = "TestLastName",
                     UserName = "test@email.com",
                     Email = "test@email.com",
+                    PhoneNumber = "0632784635",
                     Role = Role.Journalist
                 };
                 await userManager.CreateAsync(user, "P@ssw0rd!");
@@ -96,7 +98,18 @@ namespace Application.Infrastructure.Identity
                     Type = PostType.Article,
                     BlogId = 2,
                     CreateDate = DateTime.Now,
-                    PublishDate = DateTime.Now
+                    PublishDate = DateTime.Now.AddDays(2)
+                },
+                new Post
+                {
+                    Content = "The lorem ipsum text is typically a scrambled section of De finibus bonorum et malorum, a 1st-century BC Latin text by Cicero, with words altered, added, and removed to make it nonsensical, improper Latin.",
+                    Description = "some article description 2",
+                    Publications = 1280,
+                    Comments = 1785,
+                    Type = PostType.Article,
+                    BlogId = 2,
+                    CreateDate = DateTime.Now.AddHours(3),
+                    PublishDate = DateTime.Now.AddHours(7),
                 },
                 new Post
                 {
@@ -111,6 +124,28 @@ namespace Application.Infrastructure.Identity
                 },
                 new Post
                 {
+                    Content = "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo.",
+                    Description = "Description",
+                    Publications = 2478,
+                    Comments = 7663,
+                    Type = PostType.News,
+                    BlogId = 3,
+                    CreateDate = DateTime.Now.AddHours(1),
+                    PublishDate = DateTime.Now.AddDays(5)
+                },
+                new Post
+                {
+                    Content = "A lorem ipsum placeholder text was inadvertently published in The Straits Times, a Singapore newspaper, on 26 April 2014. Occasionally used by printers as dummy texts since the 1500s, use of Lorem ipsum passages was first popularized on Letraset dry-transfer sheets from the early 1970s, which were produced to be used by graphic designers for filler text.",
+                    Description = "news description",
+                    Publications = 3278,
+                    Comments = 9663,
+                    Type = PostType.News,
+                    BlogId = 3,
+                    CreateDate = DateTime.Now.AddHours(3),
+                    PublishDate = DateTime.Now.AddDays(7)
+                },
+                new Post
+                {
                     Content = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
                     Description = "this is a featured article",
                     Publications = 17,
@@ -119,6 +154,17 @@ namespace Application.Infrastructure.Identity
                     BlogId = 4,
                     CreateDate = DateTime.Now.AddDays(6),
                     PublishDate = DateTime.Now.AddDays(7)
+                },
+                new Post
+                {
+                    Content = "At vero eos et accusamus et iusto odio dignissimos ducimus, qui blanditiis praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias excepturi sint, obcaecati cupiditate non-provident, similique sunt in culpa, qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+                    Description = "this is a featured article 2",
+                    Publications = 1677,
+                    Comments = 6370,
+                    Type = PostType.FeaturedArticle,
+                    BlogId = 4,
+                    CreateDate = DateTime.Now.AddDays(6),
+                    PublishDate = DateTime.Now.AddDays(10)
                 },
                 new Post
                 {
@@ -133,13 +179,47 @@ namespace Application.Infrastructure.Identity
                 },
                 new Post
                 {
+                    Content = "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus.",
+                    Description = "insight description",
+                    Publications = 5362,
+                    Comments = 7647,
+                    Type = PostType.Insight,
+                    BlogId = 1,
+                    CreateDate = DateTime.Now.AddDays(4),
+                    PublishDate = DateTime.Now.AddDays(5)
+                },
+                new Post
+                {
+                    Content = "Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis lacus. Donec elit libero, sodales nec, volutpat a, suscipit non, turpis. Nullam sagittis.",
+                    Description = "insight description 3",
+                    Publications = 4162,
+                    Comments = 2547,
+                    Type = PostType.Insight,
+                    BlogId = 1,
+                    CreateDate = DateTime.Now.AddDays(4),
+                    PublishDate = DateTime.Now.AddDays(5)
+                },
+                new Post
+                {
                     Content = "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem",
                     Description = "this is a featured news articles",
-                    Publications = 108,
+                    Publications = 4673,
+                    Comments = 9647,
                     Type = PostType.FeaturedNews,
                     BlogId = 5,
                     CreateDate = DateTime.Now.AddDays(21),
-                    PublishDate = DateTime.Now.AddDays(22)
+                    PublishDate = DateTime.Now.AddDays(23)
+                },
+                new Post
+                {
+                    Content = "In dui magna, posuere eget, vestibulum et, tempor auctor, justo. In ac felis quis tortor malesuada pretium. Pellentesque auctor neque nec urna. Proin sapien ipsum, porta a, auctor quis, euismod ut, mi. Aenean viverra rhoncus pede.",
+                    Description = "featured news description",
+                    Publications = 3664,
+                    Comments = 1647,
+                    Type = PostType.FeaturedNews,
+                    BlogId = 5,
+                    CreateDate = DateTime.Now.AddDays(21),
+                    PublishDate = DateTime.Now.AddDays(24)
                 }
             };
 

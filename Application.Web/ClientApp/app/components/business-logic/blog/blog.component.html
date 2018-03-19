@@ -14,9 +14,15 @@
     <div class="tab-pane fade in active" *ngIf="activeTab">
         <h3>{{activeTab.name}}</h3>
 
-        <div *ngFor="let post of activeTab.posts">
-            <h4>{{post.title}}</h4>
+        <div *ngFor="let post of activeTab.posts" class="card">
+            <div class="header">
+                <h4>{{post.description}}</h4>
+            </div>
+            <hr>
             <p>{{post.content}}</p>
+            <small class="d-block text-right mt-3">
+                <a href="#">{{time.dateMonthYear(post.publishDate)}}</a>
+            </small>
         </div>
 
     </div>
