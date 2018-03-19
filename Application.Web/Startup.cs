@@ -41,18 +41,6 @@ namespace Application.Web
 
         public void ConfigureProductionServices(IServiceCollection services)
         {
-            // Add Business Logic DbContext
-            services.AddDbContext<ApplicationDbContext>(c =>
-            {
-                try
-                {
-                    c.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
-                }
-                catch (Exception ex)
-                {
-                    var message = ex.Message;
-                }
-            });
 
             // Add Identity DbContext
             var identityConnection = Configuration.GetConnectionString("IdentityConnection");

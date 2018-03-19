@@ -22,7 +22,6 @@ namespace Application.Web
                 try
                 {
                     var appIdentityDbContext = services.GetRequiredService<AppIdentityDbContext>();
-                    //ApplicationDbContextSeed.SeedAsync(applicationDbContext, loggerFactory).Wait();
 
                     var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
                     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();

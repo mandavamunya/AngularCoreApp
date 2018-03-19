@@ -17,13 +17,13 @@ namespace Application.Web.Controllers
     [Route("api/Role")]
     public class RoleController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly AppIdentityDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
 
         public RoleController(
-            ApplicationDbContext context,
+            AppIdentityDbContext context,
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             RoleManager<IdentityRole> roleManager)
