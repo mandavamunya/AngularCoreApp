@@ -14,3 +14,14 @@ Step 3: add migrations (from Web folder CLI):
 
 
 dotnet ef database update -c appidentitydbcontext -p ../Application.Infrastructure/Application.Infrastructure.csproj -s Application.Web.csproj
+
+To Login use the following details:
+
+Role: Administrator / Super Administrator 
+username: johndoe@email.com
+password: P@ssw0rd!
+
+Role: User
+username: test@email.com
+password: P@ssw0rd!
+
